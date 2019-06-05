@@ -1,0 +1,9 @@
+.bg{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('https://i.imgur.com/wArPuGc.jpg');
+  }

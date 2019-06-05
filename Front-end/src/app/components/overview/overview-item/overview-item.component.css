@@ -1,0 +1,22 @@
+.item{
+    margin: 5px;
+    display: inline-block;
+}
+
+.image{
+    border-radius: 10px;
+}
+
+.title{
+    width: 225px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    margin-top: 0px;
+    margin-bottom: -15px;
+    font-weight: bold;
+}
+
+.name{
+    margin-bottom: 20px;
+}

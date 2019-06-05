@@ -1,3 +1,6 @@
-<p>
-  overview works!
-</p>
+<app-navbar></app-navbar>
+
+<div class= "center" style="margin-top: 5%" >
+  <h1>Live streamers</h1>
+  <app-overview-item *ngFor="let user of users" [user]="user"></app-overview-item>
+</div>

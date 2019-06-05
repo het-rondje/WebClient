@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { StreamComponent } from './components/stream/stream.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { OverviewItemComponent } from './components/overview/overview-item/overview-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     StreamComponent,
     ChatComponent,
-    NavbarComponent
+    NavbarComponent,
+    OverviewItemComponent
   ],
   imports: [
     BrowserModule,

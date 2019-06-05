@@ -11,7 +11,6 @@ import { ChatComponent } from './components/chat/chat.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ModalModule, CollapseModule, BsDropdownModule, BsDatepickerModule, TimepickerModule, CarouselModule   } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -25,13 +24,7 @@ import { ModalModule, CollapseModule, BsDropdownModule, BsDatepickerModule, Time
     NavbarComponent
   ],
   imports: [
-    CollapseModule.forRoot(),
-    CarouselModule.forRoot(), 
     BrowserModule,
-    ModalModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    TimepickerModule.forRoot(),
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule

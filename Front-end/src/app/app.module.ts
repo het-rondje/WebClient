@@ -10,6 +10,9 @@ import { StreamComponent } from './components/stream/stream.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +24,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule
   ],

@@ -9,7 +9,6 @@ import { LoginComponent } from './components/login/login.component';
 import { StreamComponent } from './components/stream/stream.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { routing }        from './app.routing';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { routing }        from './app.routing';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    routing
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

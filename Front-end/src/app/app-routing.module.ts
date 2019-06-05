@@ -1,10 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OverviewComponent } from './components/overview/overview.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { Profile } from 'selenium-webdriver/firefox';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: 'overview', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'overview', component: OverviewComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+
+  // otherwise redirect to home
+  //{ path: '**', redirectTo: 'login' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

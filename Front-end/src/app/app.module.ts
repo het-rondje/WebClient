@@ -11,6 +11,9 @@ import { ChatComponent } from './components/chat/chat.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OverviewItemComponent } from './components/overview/overview-item/overview-item.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +26,8 @@ import { OverviewItemComponent } from './components/overview/overview-item/overv
     OverviewItemComponent
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule
   ],

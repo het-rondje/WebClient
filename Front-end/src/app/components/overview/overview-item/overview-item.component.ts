@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OverviewItemComponent implements OnInit {
 
-  @Input() user : {name: string, imgUrl : string, title: string};
+  @Input() user : {name: string, imgUrl : string, title: string, status: boolean};
 
   constructor() { }
 

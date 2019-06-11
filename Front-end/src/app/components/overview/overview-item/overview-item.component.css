@@ -1,3 +1,7 @@
+p{
+    color: white
+}
+
 .item{
     margin: 5px;
     display: inline-block;
@@ -24,4 +28,5 @@
 .link-visuals{
     cursor: pointer;
     text-decoration: underline;
+    text-decoration-color: white;
 }

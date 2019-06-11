@@ -88,7 +88,7 @@ body::before{
     border-radius: 5px;
     background-color: #e8e5e5;
     padding: 20px;
-    height: 500px;
+    height: 100%;
     width: 300px;
     float: right;
     margin-right: 100px

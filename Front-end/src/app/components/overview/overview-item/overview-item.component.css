@@ -20,3 +20,8 @@
 .name{
     margin-bottom: 20px;
 }
+
+.link-visuals{
+    cursor: pointer;
+    text-decoration: underline;
+}

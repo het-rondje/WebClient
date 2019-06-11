@@ -1,7 +1,7 @@
 <div class="topnav" id="myTopnav">
-  <a routerLink="/overview" class="active">Overview</a>
-  <a routerLink="/profile">Profile</a>
-  <a routerLink="/login">Logout</a>
+  <a routerLink="/overview" [routerLinkActive]="['active']" >Overview</a>
+  <a routerLink="/profile" [routerLinkActive]="['active']">Profile</a>
+  <a style="float:right" routerLink="/login">Logout</a>
   <a href="javascript:void(0);" class="icon" (click)="collapseNav()">
     <i class="fa fa-bars"></i>
   </a>

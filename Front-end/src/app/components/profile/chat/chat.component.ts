@@ -22,6 +22,7 @@ export class ChatComponent implements OnInit {
   sendMessage(){
     if(this.text.length > 0){
       this.chatService.sendMessage(this.text);
+      this.text = "";
     }
   }
 }

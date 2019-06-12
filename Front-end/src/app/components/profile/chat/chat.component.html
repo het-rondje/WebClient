@@ -1,7 +1,10 @@
 
 <div class="chat" id="ContainerRight">
   <div class="messages">
-    <p *ngFor="let message of chatService.messages"></p>
+    <p *ngFor="let message of chatService.messages">
+      {{message.text}}
+
+    </p>
   </div>
   <div class="input">
     <form>

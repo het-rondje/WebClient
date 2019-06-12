@@ -9,33 +9,25 @@
     </div>
   </div> -->
 
-
-  
-  <div class="chat" id="ContainerRight">
-    <div class="messages">
-
-    </div>
-    <div class="input">
-      <form>
-        <div class="form-group">
-          <input
-                  type="content"
-                  placeholder="Add your comment here"
-                  formControlName="content"
-                  class="form-control"
-                  required
-          />
-        </div>
-        <button
-                type="submit"
-
-        >
-          Send
-        </button>
-
-        <hr />
-      </form>
-    </div>
-
-    </div>
+<div class="chat" id="ContainerRight">
+  <div class="messages">
+    <p *ngFor="let message of chatService.messages"></p>
+  </div>
+  <div class="input">
+    <form>
+      <div class="form-group">
+        <input 
+          type="content"
+          placeholder="Add your comment here"
+          [(ngModel)]="text"
+          class="form-control"
+        />
+      </div>
+      <button (click)="sendMessage()" type="submit">
+        Send
+      </button>
+      <hr />
+    </form>
+  </div>
+</div>
     

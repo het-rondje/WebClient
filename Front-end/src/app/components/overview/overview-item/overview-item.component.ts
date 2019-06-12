@@ -15,4 +15,10 @@ export class OverviewItemComponent implements OnInit {
 
    }
 
+   //When user clicks on name or title from a live stream in the overview
+   onSelected(){
+    console.log("Clicked on user: " + this.user.name)
+    //redirect to live stream page with this.user
+   }
+
 }

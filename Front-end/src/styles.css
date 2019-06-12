@@ -4,13 +4,21 @@ body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: url('https://i.imgur.com/trTywVV.png') no-repeat;
+
   background-size: 100%;
   
-
-
 }
 
+body::before{
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, #5e5e5e, #000000);
+}
 
   .box{
     width: 300px;
@@ -63,3 +71,12 @@ body{
     background: #a01515;
   }
   
+  #ContainerRight {
+    border-radius: 5px;
+    background-color: #e8e5e5;
+    padding: 20px;
+    height: 100%;
+    width: 300px;
+    float: right;
+    margin-right: 100px
+}

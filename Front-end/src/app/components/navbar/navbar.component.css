@@ -1,11 +1,11 @@
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #222222;
+    background-color: #222222a4;
     overflow: hidden;
     font-family: sans-serif;
     font-weight: 400;
-
   }
+
   
   /* Style the links inside the navigation bar */
   .topnav a {
@@ -20,7 +20,7 @@
   
   /* Change the color of links on hover */
   .topnav a:hover {
-    background-color: rgb(82, 82, 82);
+    background-color: rgb(89, 89, 89);
     color: rgb(255, 255, 255);
   }
   

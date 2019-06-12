@@ -17,16 +17,16 @@ p{
     white-space:nowrap;
     text-overflow: ellipsis;
     margin-top: 0px;
-    margin-bottom: -15px;
+    margin-bottom: -1%;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 .name{
     margin-bottom: 20px;
+    text-decoration: underline;
 }
 
-.link-visuals{
+a:hover{
     cursor: pointer;
-    text-decoration: underline;
-    text-decoration-color: white;
 }

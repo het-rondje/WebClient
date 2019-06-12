@@ -1,15 +1,14 @@
-import { Stream } from "./stream";
+import { Message } from './message';
 
 export class User {
     id: number;
-    password: string;
     firstname: string;
     lastname: string;
-    email: string;
-    token: string;
-    stream: Stream;
+    streamUrl: string;
     birthDate: Date;
     dateJoined: Date;
+    messages: Message[];
+    viewers: User[];
 }
 
 //currently a fictional model

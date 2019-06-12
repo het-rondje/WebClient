@@ -11,9 +11,13 @@ import { User } from '../models/user';
 
 export class ChatService {
   messages: string[] = [];
+  roomId: string = "123";
+
 
   constructor(private socket: Socket) { 
     this.socket.on('message', (data) => { 
+      console.log("data: " + data);
+      console.log("room: " + data.roomId);
       this.messages.push(data);
      })
   }
@@ -23,11 +27,11 @@ export class ChatService {
     var message: Message = {     
       user: new User(),
       text: msg,
-      timePosted: new Date()
+      timePosted: new Date(),
+      roomId: this.roomId
   }
 
     this.socket.emit("message", message);
     console.log('send message: ' + message);
   }
-
 }

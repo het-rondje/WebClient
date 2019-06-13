@@ -2,35 +2,8 @@ div.ex3 {
     background-color: #e8e5e5;
     width: auto;
     height:auto;
-    
-    word-wrap: break-word;
     overflow: auto;
 }
 .messages {
     height: 70%;
-    word-wrap: break-word;
-    
 }
-
-.inline-p {
-    padding-bottom: 25%;
-    display: inline;
-}
-.name {
-    padding-bottom: 25%;
-    display: inline;
-}
-
-#chat {
-	position: absolute;
-	
-}
-
-
-.media-heading
-    {
-        padding-left: 0%;
-        padding-right: 0%;
-        color:#003bb3;
-        font-weight: 700;
-    }

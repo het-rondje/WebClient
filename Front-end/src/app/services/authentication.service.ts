@@ -65,6 +65,7 @@ export class AuthenticationService {
 }
 
   digitalSignature(privateKey: String, message: string) {
+    /*
     //Hashing message:
     var hash = require('hash.js');
     this.hashedMessage = hash.sha256().update(message).digest('hex');
@@ -99,9 +100,7 @@ export class AuthenticationService {
     console.log('encrypted: ', encrypted);
 
     //return encrypted hash
-
-    //For now, return message
-    return message;
+    return message;*/
   }
 
 

@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 
 
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,11 @@ import { HttpClient } from '@angular/common/http';
 
 export class ChatService {
   messages: string[] = [];
-  roomId: string = "5cff9cf3b15c9b3334118bc2";
+  roomId: string = "5d0223153908181fdc4ec9ac";
+  currentUser: User;
 
-
-  
-  constructor(private socket: Socket, private http: HttpClient) { 
+  constructor(private socket: Socket, private authenticationService: AuthenticationService) { 
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     this.socket.on('message', (data) => { 
       console.log("data: " + data);
       console.log("room: " + data.roomId);
@@ -35,7 +36,7 @@ export class ChatService {
   sendMessage(msg: string){
 
     var message: Message = {     
-      user: new User(),
+      user: this.currentUser,
       text: msg,
       timePosted: new Date(),
       roomId: this.roomId

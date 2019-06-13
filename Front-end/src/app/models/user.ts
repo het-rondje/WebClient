@@ -1,14 +1,13 @@
 import { Message } from './message';
 
 export class User {
-    id: number;
+    _id: string;
     firstname: string;
     lastname: string;
     streamUrl: string;
-    birthDate: Date;
     dateJoined: Date;
     messages: Message[];
-    viewers: User[];
+    viewers: number;
 }
 
 //currently a fictional model

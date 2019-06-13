@@ -32,7 +32,6 @@ export class ChatService {
 
      this.userService.selectedUserAsObservable.subscribe(data => {
       this.selectedUser = data;
-      console.log("selected user: " + data);
     })
     this.userService.getSelectedUser();
   }

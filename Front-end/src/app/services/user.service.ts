@@ -21,12 +21,14 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   setSelectedUser(user: User){
+    localStorage.setItem('selectedUser', JSON.stringify(user));
     this.userSource.next(user);
     this.selectedUser = user;
-    console.log("current selected user: " + user);
+    console.log("current selected user: " + user.firstName);
   }
 
   getSelectedUser(){
+    this.selectedUser = JSON.parse(localStorage.getItem('selectedUser'));
     return this.selectedUser;
   }
 

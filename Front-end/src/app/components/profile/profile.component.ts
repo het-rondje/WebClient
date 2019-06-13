@@ -13,15 +13,11 @@ import { User } from 'src/app/models/user';
 export class ProfileComponent implements OnInit {
   selectedUser: User;
 
-  constructor(   private route: ActivatedRoute, private chatService: ChatService, private userService:UserService) { }
+  constructor(private userService:UserService) { }
 
 
   ngOnInit() {
-    this.userService.getSelectedUser();
-    this.userService.selectedUserAsObservable.subscribe(data => {
-      this.selectedUser = data;
-      console.log(data);
-    })
+    this.selectedUser = this.userService.getSelectedUser();
   }
 
 }

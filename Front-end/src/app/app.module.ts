@@ -13,6 +13,7 @@ import { OverviewItemComponent } from './components/overview/overview-item/overv
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -34,7 +35,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

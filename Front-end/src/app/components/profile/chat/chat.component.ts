@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../../../models/message';
 import { ChatService } from 'src/app/services/chat.service';
+import {UserService} from 'src/app/services/user.service';
+import { HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-chat',
@@ -8,15 +13,20 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-
+  userId;
+  user;
   text : string ="";
 
-  constructor(private chatService: ChatService) { }
-
+  constructor(   private route: ActivatedRoute, private chatService: ChatService, private userService:UserService) { }
 
 
   ngOnInit() {
     //this.chatService.messages.subscribe(message => console.log(message))
+    const id = this.route.snapshot.paramMap.get("id");
+    this.userService.getUser(id.toString()).subscribe(data => {
+      this.user = data;
+ });
+
   }
 
   sendMessage(){

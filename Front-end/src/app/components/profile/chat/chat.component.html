@@ -1,8 +1,4 @@
 
-     </button>
-    </div>
-  </div> -->
-
 <div class="chat" id="ContainerRight">
   <div class="messages">
     <p *ngFor="let message of chatService.messages"></p>
@@ -15,6 +11,7 @@
           placeholder="Add your comment here"
           [(ngModel)]="text"
           class="form-control"
+          name="message"
         />
       </div>
       <button (click)="sendMessage()" type="submit">

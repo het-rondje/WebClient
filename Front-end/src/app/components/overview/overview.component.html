@@ -3,21 +3,29 @@
 <!-- Live streamers: -->
 <div class="center" style="margin-top: 5%">
   <h1>Live streamers</h1>
-
-  <ng-container *ngFor="let user of users">
+<!-- 
+<ng-container *ngFor="let user of users">
     <span *ngIf="user.status">
       <app-overview-item [user]="user"></app-overview-item>
     </span>
-  </ng-container>
-</div>
+  </ng-container> -->
+</div> 
 
-<!-- Users that are not streaming: -->
+
 <div class="center" style="margin-top: 5%">
-  <h2>Users</h2>
+  <h2>Users that are not streaming</h2>
 
-  <ng-container *ngFor="let user of users">
-    <div *ngIf="!user.status">
-      {{ user.name }}
-    </div>
-  </ng-container>
+<ul>
+  <li *ngFor="let user of users">
+      <a routerLink="/profile/{{user?.id}}"> 
+    <p>{{user?.firstname}} {{user?.lastname}}</p>
+    </a>
+  </li>
+</ul>
+
+  <!-- <ng-container *ngFor="let user of users">
+    <div *ngIf="!user.status"> -->
+      <!-- {{ user.name }} -->
+    <!-- </div> -->
+  <!-- </ng-container>  -->
 </div>

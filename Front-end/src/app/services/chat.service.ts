@@ -4,15 +4,21 @@ import { first } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Message } from '../models/message';
 import { User } from '../models/user';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 
+
 export class ChatService {
   messages: string[] = [];
+ 
 
-  constructor(private socket: Socket) { 
+  
+  constructor(private socket: Socket, private http: HttpClient) { 
     this.socket.on('message', (data) => { 
       this.messages.push(data);
      })
@@ -29,5 +35,6 @@ export class ChatService {
     this.socket.emit("message", message);
     console.log('send message: ' + message);
   }
+  
 
 }

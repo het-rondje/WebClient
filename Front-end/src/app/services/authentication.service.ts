@@ -20,20 +20,20 @@ export class AuthenticationService {
     this.message = this.date + "-login";
 
     //Hash message + encrypt hash:
-    this.digitalSignature(privateKey, this.message);
+    //this.digitalSignature(privateKey, this.message);
   }
 
-  digitalSignature(privateKey: String, message: string) {
-    //Hashing message:
-    var hash = require('hash.js');
-    this.hashedMessage = hash.sha256().update(message).digest('hex');
-    console.log(message);
-    console.log(this.hashedMessage);
+  // digitalSignature(privateKey: String, message: string) {
+  //   //Hashing message:
+  //   var hash = require('hash.js');
+  //   this.hashedMessage = hash.sha256().update(message).digest('hex');
+  //   console.log(message);
+  //   console.log(this.hashedMessage);
 
-    //Hash encrypten:
+  //   //Hash encrypten:
     
 
-    //return encrypted hash
-  }
+  //   //return encrypted hash
+  // }
 
 }

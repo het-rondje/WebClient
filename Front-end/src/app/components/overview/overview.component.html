@@ -17,8 +17,8 @@
 
 <ul>
   <li *ngFor="let user of users">
-      <a routerLink="/profile/{{user?.id}}"> 
-    <p>{{user?.firstname}} {{user?.lastname}}</p>
+      <a routerLink="/profile/{{user?._id}}" (click)="setSelectedUser(user)"> 
+    <p>{{user?.firstName}} {{user?.lastName}} {{user?._id}}</p>
     </a>
   </li>
 </ul>

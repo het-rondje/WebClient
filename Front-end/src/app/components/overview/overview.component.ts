@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-overview',
@@ -14,20 +15,17 @@ export class OverviewComponent implements OnInit{
   constructor(private userService:UserService) { }
 
   ngOnInit() {
-    // Dummy data
-    // Status = Streaming or not
-    // this.users.push({ name: "Jan", imgUrl: "", title: "Way too long Title to fit the image box....", status: true })
-    // this.users.push({ name: "Henk", imgUrl: "", title: "Title", status: true })
-    // this.users.push({ name: "Piet", imgUrl: "", title: "Title", status: false })
-    // this.users.push({ name: "Jan", imgUrl: "", title: "Title", status: true })
-    // this.users.push({ name: "Henk", imgUrl: "", title: "Title", status: false })
-    // this.users.push({ name: "Piet", imgUrl: "", title: "Title", status: true })
-    // this.users.push({ name: "Jan", imgUrl: "", title: "Title", status: true })
-    // this.users.push({ name: "Henk", imgUrl: "", title: "Title", status: true })
-    // this.users.push({ name: "Piet", imgUrl: "", title: "Title", status: false })
-    this.userService.getUsers().subscribe(data => {
-      this.users = data
+    
+    this.userService.users.subscribe(data => {
+      this.users = data;
+      console.log(data);
     })
+
+    this.userService.getUsers();
+  }
+
+  setSelectedPost(user: User){
+    this.userService.setSelectedUser(user);
   }
 
 }

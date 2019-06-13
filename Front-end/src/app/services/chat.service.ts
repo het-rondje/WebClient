@@ -16,7 +16,7 @@ import { AuthenticationService } from '../services/authentication.service';
 
 export class ChatService {
   messages: string[] = [];
-  roomId: string = "5d0223153908181fdc4ec9ac";
+  roomId: string = "5d02242d3908181fdc4ec9ae";
   currentUser: User;
 
   constructor(private socket: Socket, private authenticationService: AuthenticationService) { 

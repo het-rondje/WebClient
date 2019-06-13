@@ -17,12 +17,11 @@ export class ChatComponent implements OnInit {
   user;
   text : string ="";
 
-  constructor(   private route: ActivatedRoute, private chatService: ChatService, private userService:UserService) { }
+  constructor(private chatService: ChatService, private userService:UserService) { }
 
 
   ngOnInit() {
     //this.chatService.messages.subscribe(message => console.log(message))
-    const id = this.route.snapshot.paramMap.get("id");
     this.userService.getUser(id.toString()).subscribe(data => {
       this.user = data;
  });

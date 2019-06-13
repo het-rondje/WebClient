@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit() {
-    //this.chatService.messages.subscribe(message => console.log(message))
+    this.chatService.joinRoom('5cff9cf3b15c9b3334118bc2');  
   }
 
   sendMessage(){

@@ -11,7 +11,7 @@ import { User } from '../models/user';
 
 export class ChatService {
   messages: string[] = [];
-  roomId: string = "123";
+  roomId: string = "5cff9cf3b15c9b3334118bc2";
 
 
   constructor(private socket: Socket) { 
@@ -20,6 +20,11 @@ export class ChatService {
       console.log("room: " + data.roomId);
       this.messages.push(data);
      })
+  }
+
+  joinRoom(roomId: string){
+    this.socket.emit("join", roomId);
+    console.log('joined room: ' + roomId)
   }
 
   sendMessage(msg: string){

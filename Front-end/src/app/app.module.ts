@@ -15,7 +15,6 @@ import { OverviewItemComponent } from './components/overview/overview-item/overv
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 

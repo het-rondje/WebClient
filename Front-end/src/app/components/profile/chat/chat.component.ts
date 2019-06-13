@@ -13,20 +13,19 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  userId;
-  user;
   text : string ="";
+  selectedUser: User;
 
-  constructor(private chatService: ChatService, private userService:UserService) { }
-
+  constructor(private chatService: ChatService, private userService:UserService) {}
 
   ngOnInit() {
-    //this.chatService.messages.subscribe(message => console.log(message))
-    this.userService.getUser(id.toString()).subscribe(data => {
-      this.user = data;
- });
+    this.userService.selectedUserAsObservable.subscribe(data => {
+      this.selectedUser = data;
+      console.log(data);
+    })
 
-    this.chatService.joinRoom('5cff9cf3b15c9b3334118bc2');  
+    this.userService.getSelectedUser();
+    this.chatService.joinRoom();  
   }
 
   sendMessage(){

@@ -24,8 +24,8 @@ export class OverviewComponent implements OnInit{
     this.userService.getUsers();
   }
 
-  setSelectedPost(user: User){
+  setSelectedUser(user: User){
+    console.log("set selected user: " + user)
     this.userService.setSelectedUser(user);
   }
-
 }

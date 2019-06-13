@@ -11,7 +11,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class UserService {
 
   private userSource = new BehaviorSubject(new User);
-  public selectedPostAsObservable = this.userSource.asObservable();
+  public selectedUserAsObservable = this.userSource.asObservable();
   private selectedUser : User;
 
   private usersSource = new BehaviorSubject([]); 

@@ -21,7 +21,7 @@ body::before{
 }
 
   .box{
-    width: 300px;
+    width: 20%;
     padding: 40px;
     position: absolute;
     top: 50%;

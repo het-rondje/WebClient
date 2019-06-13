@@ -27,11 +27,13 @@ export class ChatComponent implements OnInit {
       this.user = data;
  });
 
+    this.chatService.joinRoom('5cff9cf3b15c9b3334118bc2');  
   }
 
   sendMessage(){
     if(this.text.length > 0){
       this.chatService.sendMessage(this.text);
+      this.text = "";
     }
   }
 }

@@ -1,7 +1,9 @@
-
 <div class="chat" id="ContainerRight">
   <div class="messages">
-    <p *ngFor="let message of chatService.messages"></p>
+    <p *ngFor="let message of chatService.messages">
+      {{message.text}}
+
+    </p>
   </div>
   <div class="input">
     <form>
@@ -11,7 +13,7 @@
           placeholder="Add your comment here"
           [(ngModel)]="text"
           class="form-control"
-          name="message"
+          name="something"
         />
       </div>
       <button (click)="sendMessage()" type="submit">
@@ -21,4 +23,3 @@
     </form>
   </div>
 </div>
-    

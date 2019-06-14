@@ -39,6 +39,9 @@ export class AuthenticationService {
     //Object Back-end wants when sending a chat message:
     var a: { id: string, message: string, signature: string };
 
+
+    //ID signature en message
+
     //Create message:
     this.message = this.date + "-login";
 
@@ -59,9 +62,14 @@ export class AuthenticationService {
     //   }));
   }
 
+  //Hashes a given string message with sha256
+  hash(message: string) {
+    return hash.sha256().update(message).digest('hex');
+  }
+
   digitalSignature(privateKey: String, message: string) {
     //Hashing message:
-    this.hashedMessage = hash.sha256().update(message).digest('hex');
+    this.hashedMessage = this.hash(message);
 
     console.log('Message to encrypt: ' + message);
     console.log('Hash from message: ' + this.hashedMessage);
@@ -69,9 +77,9 @@ export class AuthenticationService {
 
     //Return encrypted hash
     return this.encryptData(this.hashedMessage)
-
   }
 
+  //Encrypts given data with this.encryptSecretKey
   encryptData(data) {
     try {
       return crypto.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();

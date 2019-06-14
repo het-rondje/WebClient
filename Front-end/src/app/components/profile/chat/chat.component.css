@@ -9,9 +9,7 @@ div.ex3 {
 }
 
 .artigo_nome {
-    
-    display: inline-block;
-    max-width: 250px;
+    max-width: 100%;
     padding: 10px;
     word-break: break-all; /* optional */
 }

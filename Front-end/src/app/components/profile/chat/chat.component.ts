@@ -33,4 +33,8 @@ export class ChatComponent implements OnInit {
       this.text = "";
     }
   }
+  addEmoji(emoji){
+    console.log(emoji);
+    this.text += emoji.emoji.native;
+  }
 }

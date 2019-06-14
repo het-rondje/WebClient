@@ -21,7 +21,8 @@
       <button (click)="sendMessage()" type="submit">
         Send
       </button>
-      <hr />
+
+      <emoji-mart title="Pick your emoji…" (emojiClick)="addEmoji($event)"></emoji-mart>
     </form>
   </div>
 </div>

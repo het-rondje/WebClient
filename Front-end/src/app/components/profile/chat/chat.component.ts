@@ -21,7 +21,6 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
     this.userService.selectedUserAsObservable.subscribe(data => {
       this.selectedUser = data;
-      console.log(data);
     })
 
     this.userService.getSelectedUser();

@@ -1,9 +1,8 @@
 import { User } from "./user";
 
 export class Message {
-    user: User;
+    sender: User;
     text: string;
-    timePosted: Date;
     roomId: string;
 }
 

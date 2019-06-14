@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Message } from '../models/message';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 
 import { AuthenticationService } from '../services/authentication.service';
@@ -16,17 +17,16 @@ import { UserService } from './user.service';
 
 
 export class ChatService {
-  messages: string[] = [];
+  messages: Message[] = [];
   currentUser: User;
   selectedUser: User;
 
-  constructor(private socket: Socket, private authenticationService: AuthenticationService,
+  constructor(private http: HttpClient, private socket: Socket, private authenticationService: AuthenticationService,
     private userService: UserService) {
 
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     this.socket.on('message', (data) => { 
-      console.log("data: " + data);
-      console.log("room: " + data.roomId);
+      console.log("as data: " + data.text);
       this.messages.push(data);
      })
 
@@ -39,18 +39,26 @@ export class ChatService {
   joinRoom(){
     this.socket.emit("join", this.selectedUser._id);
     console.log('joined room: ' + this.selectedUser._id)
+    this.getChatHistory();
+  }
+
+  getChatHistory(){
+    this.http.get<User>(`${environment.apiUrl}/users/` + this.selectedUser._id).pipe(first()).subscribe(user => {
+      console.log("called get on user, result : " + user.toString);
+      this.messages = user.messages;
+  });
+
   }
 
   sendMessage(msg: string){
 
     var message: Message = {     
-      user: this.currentUser,
+      sender: this.currentUser,
       text: msg,
-      timePosted: new Date(),
       roomId: this.selectedUser._id
   }
 
     this.socket.emit("message", message);
-    console.log('send message: ' + message);
+    console.log('send message: ' + message.roomId);
   }
 }

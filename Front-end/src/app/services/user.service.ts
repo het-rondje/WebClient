@@ -29,6 +29,7 @@ export class UserService {
 
   getSelectedUser(){
     this.selectedUser = JSON.parse(localStorage.getItem('selectedUser'));
+    this.userSource.next(this.selectedUser);
     return this.selectedUser;
   }
 

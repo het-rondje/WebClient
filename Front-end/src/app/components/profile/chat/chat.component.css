@@ -7,3 +7,21 @@ div.ex3 {
 .messages {
     height: 70%;
 }
+
+.artigo_nome {
+    
+    display: inline-block;
+    max-width: 250px;
+    padding: 10px;
+    word-break: break-all; /* optional */
+}
+
+.chat_size{
+    color:blue;
+    font-weight:bold
+}
+
+.inline-p {
+    
+    display: inline;
+}

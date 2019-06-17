@@ -61,8 +61,8 @@ export class AuthenticationService {
           let json = JSON.stringify(result);
           let obj = JSON.parse(json)
           user._id = obj.user.id;
-          user.firstname = obj.user.firstName;
-          user.lastname = obj.user.lastName;
+          user.firstName = obj.user.firstName;
+          user.lastName = obj.user.lastName;
 
           localStorage.setItem('currentUser', JSON.stringify(user));
           console.log(user)

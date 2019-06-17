@@ -19,7 +19,7 @@ body::before{
   bottom: 0;
   right: 0;
   z-index: -1;
-  background: linear-gradient(to bottom, #5e5e5e, #000000);
+  background: linear-gradient(to top, #5e5e5e, #1f1f1f);
 }
 
   .box{

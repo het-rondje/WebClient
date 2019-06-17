@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 declare function collapse(): any;
 
@@ -10,7 +11,7 @@ declare function collapse(): any;
 
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthenticationService) { }
 
   ngOnInit() {
 
@@ -18,5 +19,9 @@ export class NavbarComponent implements OnInit {
 
   collapseNav(){
     collapse();
+  }
+
+  logout(){
+    this.auth.logout();
   }
 }

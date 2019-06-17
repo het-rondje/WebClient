@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from '../models/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import * as hash from 'hash.js';
+import * as crypto from 'crypto-js';
+import { Router } from '@angular/router';
 
 //Hash package importeren
 
@@ -12,99 +15,96 @@ import { map } from 'rxjs/operators';
 })
 export class AuthenticationService {
 
-  private date: number;
-  private message: string = "";
+  private loggedIn: boolean = false;
+
   private hashedMessage: string;
+  public signature: string;
+  private httpOptions = {};
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
-
   }
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
 
-  login(privateKey: String) {
-    //Set date to now:
-    this.date = Date.now();
+  login(privateKey: string, id: string) {
+    let body = {}
 
-    //Object Back-end wants when sending a chat message:
-    var a: { id: string, message: string, signature: string };
+    let date = new Date;
+    let timestamp = date.getTime().toString(); //FORMAT??
 
-    //Create message:
-    this.message = this.date + "-login";
-    //Add userID
+    const timeSignature = this.digitalSignature(privateKey, timestamp);
 
-    //Hash message + encrypt hash:
-    this.digitalSignature(privateKey, this.message);
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'signature': sig, // body signature NOT FOR LOGIN
+        'timestamp': timestamp,
+        'timesignature': timeSignature,
+        'userid': id,
+        'id': id
+      })
+    };
+
+    return this.http.post('http://localhost:3000/api/users/' + id, body, this.httpOptions)
+      .pipe(
+        map(result => {
+          console.log(result)
+
+          let user: User =new User;
+          let json = JSON.stringify(result);
+          let obj = JSON.parse(json)
+          user._id = obj.user.id;
+          user.firstname = obj.user.firstName;
+          user.lastname = obj.user.lastName;
+
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          console.log(user)
+          this.loggedIn = true;
+          return user;
+        })
+      )
+  }
 
 
-    return this.http.post<any>(`${environment.apiUrl}/login`, { /* digital signature here */ })
-    .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        console.log('token -> ' + user.token);
-        if (user && user.token) {
-            console.log("valid");
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            this.currentUserSubject.next(user);
-        }
-        return user;
-    }));
+  private digitalSignature(privateKey: string, content: any) {
+    //Hashing content:
+    this.hashedMessage = this.hash(content);
+
+    //Return signature
+    return this.encryptData(this.hashedMessage, privateKey);
+  }
+
+  //Hashes a given string message with sha256
+  private hash(message: string) {
+    return hash.sha256().update(message).digest('hex');
+  }
+
+  //Encrypts given data with this.encryptSecretKey
+  private encryptData(data, privateKey: string) {
+    try {
+      return crypto.AES.encrypt(JSON.stringify(data), privateKey).toString();
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.loggedIn = false;
     this.currentUserSubject.next(null);
-}
-
-  digitalSignature(privateKey: String, message: string) {
-    /*
-    //Hashing message:
-    var hash = require('hash.js');
-    this.hashedMessage = hash.sha256().update(message).digest('hex');
-    console.log('Message to encrypt: ' + message);
-    console.log('Hash from message: ' + this.hashedMessage);
-
-    //Hash encrypten:
-
-    // //Jan's piece
-    // const fs = require('fs')
-    // const crypto = require('crypto')
-
-    // // Get key //Might have to get it from a parameter
-    // const pem = fs.readFileSync('../private.pem')
-    // const key = pem.toString('ascii')
-
-    // //Create Signature
-    // const sign = crypto.createSign('RSA-SHA256')
-    // sign.update(this.hashedMessage)
-    // // const sig = sign.sign(key,'hex')
-    // const sig = sign.sign(privateKey,'hex')
-    // console.log('Signature: ' + sig)
-
-    const NodeRSA = require('node-rsa');
-    //Get Key
-    const key = new NodeRSA(privateKey);
-    
-    const text = 'Hello RSA!';
-
-    //Enrypt
-    const encrypted = key.encrypt(text, 'hex');
-    console.log('encrypted: ', encrypted);
-
-    //return encrypted hash
-    return message;*/
+    this.router.navigate(['/login'])
   }
 
-
-  //return encrypted hash
-
+  isLoggedIn(){
+    return this.loggedIn;
+  }
 
 }

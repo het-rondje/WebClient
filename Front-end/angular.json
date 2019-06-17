@@ -27,7 +27,8 @@
               "src/styles.css"            
             ],
             "scripts": [
-              "src/assets/js/nav-collapse.js"
+              "src/assets/js/nav-collapse.js",
+              "node_modules/flv.js/dist/flv.js"
             ]
           },
           "configurations": {

@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { PickerModule } from '@ctrl/ngx-emoji-mart'
 
+declare const videojs: any;
 const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
 

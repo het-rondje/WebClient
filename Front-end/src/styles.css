@@ -72,7 +72,7 @@ body::before{
   .box input[type = "submit"]:hover{
     background: #a01515;
   }
-  
+
   #ContainerRight {
     border-radius: 5px;
     background-color: #e8e5e5;

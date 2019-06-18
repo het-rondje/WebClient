@@ -26,6 +26,7 @@
     "crypto-js": "^3.1.9-1",
     "flv.js": "^1.5.0",
     "font-awesome": "^4.7.0",
+    "jsencrypt": "^3.0.0-rc.1",
     "ngx-socket-io": "^2.1.1",
     "npm": "^6.9.0",
     "rxjs": "~6.5.2",

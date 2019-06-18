@@ -28,7 +28,8 @@
             ],
             "scripts": [
               "src/assets/js/nav-collapse.js",
-              "node_modules/flv.js/dist/flv.js"
+              "node_modules/flv.js/dist/flv.js",
+              "src/assets/js/jsencrypt/bin/jsencrypt.js"
             ]
           },
           "configurations": {

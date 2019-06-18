@@ -6,6 +6,8 @@ import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import * as hash from 'hash.js';
 import * as crypto from 'crypto-js';
+import * as jsencrypt from 'jsencrypt';
+
 import { Router } from '@angular/router';
 
 //Hash package importeren
@@ -46,13 +48,14 @@ export class AuthenticationService {
         'Content-Type': 'application/json',
         // 'signature': sig, // body signature NOT FOR LOGIN
         'timestamp': timestamp,
+        'signature': timeSignature,
         'timesignature': timeSignature,
         'userid': id,
         'id': id
       })
     };
 
-    return this.http.post('http://localhost:3000/api/users/' + id, body, this.httpOptions)
+    return this.http.post('http://159.65.197.36:3000/api/users/' + id, body, this.httpOptions)
       .pipe(
         map(result => {
           console.log(result)
@@ -89,7 +92,13 @@ export class AuthenticationService {
   //Encrypts given data with this.encryptSecretKey
   private encryptData(data, privateKey: string) {
     try {
-      return crypto.AES.encrypt(JSON.stringify(data), privateKey).toString();
+      var encrypt = new jsencrypt.JSEncrypt();
+      encrypt.setPublicKey(privateKey);
+      console.log(JSON.stringify(data));
+      console.log(encrypt.encrypt(JSON.stringify(data)));
+      return encrypt.encrypt(JSON.stringify(data));
+
+      //return crypto.AES.encrypt(JSON.stringify(data), privateKey).toString();
     } catch (e) {
       console.log(e);
     }

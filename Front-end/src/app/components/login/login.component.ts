@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private hardcodedKey: string = "-----BEGIN PRIVATE KEY-----MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCnIlcAVr2KMii8n0ykvIcizGP/NBHIOhcYFwjoupt1QbrWgmuZ7TtAyeiKvG55widDno2uU7DZAMlnk8IXRrKg6uOqNPg5sR3hozllmg7fusVKGaRR5WtJ0ScuehtgXDjkqCQkgxLgJOMrCzxHQCXRJTBUp1Zvb94bCR00A9k7CP7jT0sh79yWHJPv50qgaATA7wuDmFs700FBxDj4iDB+jvr1Lh+N0dcrKLoBuMKS/yikoXHwBmkCUKbDPfIscZ2gc0wKaNyKFTSFugoXncU962bR3dp/NZsWj9+8UCTT7hYU/crID/szFm3otsqL5aJJ56l/NHPypZXzNDkijfPDAgMBAAECggEBAJnmqS6KsSZcYd6u4aigYd/NThdmHym9NB7etzl2/EfRKvb0SZkINpPGWPfH5AMCoZ1Glzh7oFFyxAM4sHU2iK5dHR9Sf3DAg7+Oyf+hCSlDlwBQ9FrlYxIqImZN0n+87DbCDeYBPJRh4z1zryH9E9Wu5P5OyOz8mg1TKy0GjjYo4tehLGNslTyV35+RnR9CdCRng9nT0rVMLr+C5Z578Yz61Q5s5RuLlC+qC8FqXipU4rf0B/sMhbdWQ6diKqpxbchLvNEwA19RqMMJdsxZtjpwzUXFiWjxtz7BjY33XK2SYEO8h79oF6KzdxEOdM9p3g/02snqJTpjWpMkdxAwTqECgYEA+ToM2mkdMC7/2VoHaUfmQsHMzUDNNLp/bsnqqJzzvKlTusjJ8SJINVZ7UZ6pk+NG2hnfpTH5mJZjELZ9Sog1w++h3RpSRG4K5hEnwhN02kFVcOcZEfVPTAV5lrVZEGRWiHSeVHEesjaTB+ICNnJgJV0UXvRAS6fDZlQQ0ZXzp0cCgYEAq60lK4Xc+GpkD/9cY+3/u42z1GhCxjj6wW7vPplNwzk07gqvIc+QA2sbwTfQsKkFggUngfvytrcdTh1J9AevLr7Gyh8Nh9+uCGP3jpiynw2XkuV6ycz+7dHXzo1q7YYUNg+yvp/oG/3f4o3RLddRInoBe+z1WUtoNtKSuUyrRaUCgYEA3DAyXODTXdeYSUJmG9jfEYnBVHH1GqnOnmYcQP3xxXPgOrzc1YLRQvZ2G0VPUw5Qca68TWnat7neKkzgYvH2dnaHjh2MI1MJo/vyIWApNA7W2toB50DQ3zxTERiFaJsNbJ+Dpt0OHqtiuWsvQ0VHtpsGvWGUUIMWepi5B0IxM08CgYEAndkLjiL886PO8S6YYoFYW7iEmk5q5xtI5EX90A7hAxk8Y4qLUIkqHxqCYHvTdDtUhyH6G3fuyLVBSqt/bdMK7e4XlYxLwpyVxb00x3X69mdm8HfzGE1WMJB63r4EjPR07OguLzuUDPi2u/YtWPra7NpFNw6+4CWHYrDmm121NMkCgYBA3zsb+pb2yZnWmyK7nQOft9cr384kpjyQmmzqNuWKS7EJCdzjhOrVJ+DF8nQRQ4disjqxJfQCILhXlvfkFynZN4sZnBvP1/XU2oX/hrHvNdlUcBpJbI568ke/AYZrDzMgbqb5jK1S1ButlRgd541xDSe0k4dxVHhcFdhUZlokIw==-----END PRIVATE KEY-----";
-  private hardcodedId: string = "Io9px3dQP";
+  private hardcodedKey: string = "-----BEGIN PRIVATE KEY-----MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCWOG1b6Izjmfb/JqzJVYEBNl+hR++nfkU+rbfvk0R6+4FWAC0GEfq4eucUK0hTJkwn6jtJ26XLn43lrDEfNGntoWL6Z5JUKlN4vvWSRI9oHVBZ8ZICfCudXtMwJc9mPKUqQYHSN7IjJrkuQU9czwjhNEIewlGzZkEzAHGy0tyqsUDvpzPiZSNkkDnNxVhJIexvjBmD3vdZesvoY/Pyv5sVkr4ua+0iOLlPaVuAMLw9rr2mQPQg5l2tA+6XswanCWBNW9caI6oXLIANxt019KKx1RaUDfDUdztmcmu840MzlG2QM9JF24sOn90yaVDXHc32bJvx91sczGasFcb1DUhdAgMBAAECggEAUWfUw5i7OOAHvO99dUGzvi90FVeBZNgFuFi1s8uvsaG3zh4cSAzYPL7FmOV3tS+s13iUlorERxt47vyoRgvGV7M8iwwzfQ7O20FInPIwcLBqCcPiZxxZGlf3xEDJKtM0gjirnHr4OxpSAeH8mwPLAReruTV+xuRj8rqL4udoE8tQqte9WXI5HPWrBKsk9slZMnY9LQv0UkeEJcScvMaJlXagL5SKR6lKCuakY/Z7emZqFX2yvBGz8kjAUvN+GpSaFVMCwM5rF/s5BXXtbJ0KoxmDUHsda1B6cBRwZfnvg0CI1rATydl1dZPvxQUEDfqATZNkhkKr+Bi3KwQV4HnRlQKBgQDq79ibQtDPvEKH24p5/9pCcl12BvCDm3pYvUBfstoeI5TxvjVjZoJqQ3Ez8XKoIKAqANiuHiGXTxOv7axfszgmtRStFUaRQXa/YGYha02j8Px8BYZbKjYSgkY/aulBw+zx3EYlTleZb4ZDwre9dk5NkPm0duHhE7EhTKZRKchljwKBgQCjsDX9UiUBlVNpUFFU7x/cPv9P4o8p+pEAH4zFsfjGUVjy9vy1HGJ8iy6s58PT2mG0pzuJogCYhdLfxSMukT85kQh1kddAeiYbcDHhhdMqUZuVSZ+GG0trN6MvQ/CUuGu/fpwcdtNCySoRUQnj6mlYN5PyLE+fr4+ho9UW8bZ1UwKBgH/zwsfEmw8YnC973S5WrxtTSB2Y5/L1gavE3sOAGBUkEeGbU15gnRScyJGepXB13GUj8t7ZoDfVJIbDbgbtB97k7m7Z0IYZ3j+ak+UNmMp53Dj7lVIfajWoZ/PwGTvtJiYPbtCwmzsAp2JOMV3pifnqxGSJ/rljzSuyoD5CAFd3AoGBAJs00OyCwB4RNgbspkGvfvk6LqHTg8XdFTIVuEgX6Xg51+qA8LrV0DihTD+cfp1ZOz2tOBHXr1LvyTRuW16jUFzIPUolYAF+ELYBmvppBwHgYXKbXYwuQ0PFfJCrjemmOFxZs7J1pPl1ftLukT8vnHWONVTyWQlj0QAGNV3NESGLAoGAfGZm5sriuYS1bX4Vod3ByciOIp2vF4G04bWhp+4uBJyf8YSXEBT3p4+BYOR4T70Z9wvK49N0L+SbQPpVNPXZwhyG2+GOliKtrKa5CZk9eGl0zG6RhsAjjRZ5hoRk+1b2C6LgXSTTeGEkBAkKUKpylE9+tT4/0tr7u9ywEZi1KdA=-----END PRIVATE KEY-----";
+  private hardcodedKeyWithEnter: string = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCWOG1b6Izjmfb/\nJqzJVYEBNl+hR++nfkU+rbfvk0R6+4FWAC0GEfq4eucUK0hTJkwn6jtJ26XLn43l\nrDEfNGntoWL6Z5JUKlN4vvWSRI9oHVBZ8ZICfCudXtMwJc9mPKUqQYHSN7IjJrku\nQU9czwjhNEIewlGzZkEzAHGy0tyqsUDvpzPiZSNkkDnNxVhJIexvjBmD3vdZesvo\nY/Pyv5sVkr4ua+0iOLlPaVuAMLw9rr2mQPQg5l2tA+6XswanCWBNW9caI6oXLIAN\nxt019KKx1RaUDfDUdztmcmu840MzlG2QM9JF24sOn90yaVDXHc32bJvx91sczGas\nFcb1DUhdAgMBAAECggEAUWfUw5i7OOAHvO99dUGzvi90FVeBZNgFuFi1s8uvsaG3\nzh4cSAzYPL7FmOV3tS+s13iUlorERxt47vyoRgvGV7M8iwwzfQ7O20FInPIwcLBq\nCcPiZxxZGlf3xEDJKtM0gjirnHr4OxpSAeH8mwPLAReruTV+xuRj8rqL4udoE8tQ\nqte9WXI5HPWrBKsk9slZMnY9LQv0UkeEJcScvMaJlXagL5SKR6lKCuakY/Z7emZq\nFX2yvBGz8kjAUvN+GpSaFVMCwM5rF/s5BXXtbJ0KoxmDUHsda1B6cBRwZfnvg0CI\n1rATydl1dZPvxQUEDfqATZNkhkKr+Bi3KwQV4HnRlQKBgQDq79ibQtDPvEKH24p5\n/9pCcl12BvCDm3pYvUBfstoeI5TxvjVjZoJqQ3Ez8XKoIKAqANiuHiGXTxOv7axf\nszgmtRStFUaRQXa/YGYha02j8Px8BYZbKjYSgkY/aulBw+zx3EYlTleZb4ZDwre9\ndk5NkPm0duHhE7EhTKZRKchljwKBgQCjsDX9UiUBlVNpUFFU7x/cPv9P4o8p+pEA\nH4zFsfjGUVjy9vy1HGJ8iy6s58PT2mG0pzuJogCYhdLfxSMukT85kQh1kddAeiYb\ncDHhhdMqUZuVSZ+GG0trN6MvQ/CUuGu/fpwcdtNCySoRUQnj6mlYN5PyLE+fr4+h\no9UW8bZ1UwKBgH/zwsfEmw8YnC973S5WrxtTSB2Y5/L1gavE3sOAGBUkEeGbU15g\nnRScyJGepXB13GUj8t7ZoDfVJIbDbgbtB97k7m7Z0IYZ3j+ak+UNmMp53Dj7lVIf\najWoZ/PwGTvtJiYPbtCwmzsAp2JOMV3pifnqxGSJ/rljzSuyoD5CAFd3AoGBAJs0\n0OyCwB4RNgbspkGvfvk6LqHTg8XdFTIVuEgX6Xg51+qA8LrV0DihTD+cfp1ZOz2t\nOBHXr1LvyTRuW16jUFzIPUolYAF+ELYBmvppBwHgYXKbXYwuQ0PFfJCrjemmOFxZ\ns7J1pPl1ftLukT8vnHWONVTyWQlj0QAGNV3NESGLAoGAfGZm5sriuYS1bX4Vod3B\nyciOIp2vF4G04bWhp+4uBJyf8YSXEBT3p4+BYOR4T70Z9wvK49N0L+SbQPpVNPXZ\nwhyG2+GOliKtrKa5CZk9eGl0zG6RhsAjjRZ5hoRk+1b2C6LgXSTTeGEkBAkKUKpy\nlE9+tT4/0tr7u9ywEZi1KdA=\n-----END PRIVATE KEY-----";
+
+  private hardcodedId: string = "huYRrduZ9";
 
   private privateKey: string;
   private id: string;
@@ -21,7 +23,16 @@ export class LoginComponent implements OnInit {
 
 
   loginUser() {
-    this.auth.login(this.privateKey, this.id).subscribe(response => {
+    //this.auth.login(this.privateKey, this.id).subscribe(response => {
+    this.auth.login(this.hardcodedKey, this.hardcodedId).subscribe(response => {
+
+      console.log(response)
+      if (this.auth.isLoggedIn())
+        this.router.navigateByUrl('/')
+    })
+
+    this.auth.login(this.hardcodedKeyWithEnter, this.hardcodedId).subscribe(response => {
+
       console.log(response)
       if (this.auth.isLoggedIn())
         this.router.navigateByUrl('/')

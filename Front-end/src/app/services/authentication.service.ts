@@ -55,7 +55,7 @@ export class AuthenticationService {
       })
     };
 
-    return this.http.post('http://159.65.197.36:3000/api/users/' + id, body, this.httpOptions)
+    return this.http.post('http://localhost:3000/api/users/' + id, body, this.httpOptions)
       .pipe(
         map(result => {
           console.log(result)
@@ -81,6 +81,8 @@ export class AuthenticationService {
     //this.hashedMessage = this.hash(content);
 
     //Return signature
+
+    console.log('encrypting data: ' + content.replace('"', '') + ' with key: ' + privateKey);
     return this.encryptData(content, privateKey);
   }
 
@@ -94,10 +96,18 @@ export class AuthenticationService {
     try {
       var encrypt = new jsencrypt.JSEncrypt();
 
+      //var signature = encrypt.getKey().sign(data, crypto.SHA256, "hex");
+
+
       encrypt.setPrivateKey(privateKey);
+      var signature = encrypt.getKey().sign(data, crypto.SHA256, "'RSA-SHA256");
 
-      var signature = encrypt.getKey().sign(data, crypto.SHA256, "sha256");
+/*
+      const sign = crypto.createSign('RSA-SHA256');
 
+      sign.update(data);
+      const signature = sign.sign(privateKey, 'hex');
+*/
 
      //encrypt.setPublicKey(privateKey);
       //console.log(JSON.stringify(data));

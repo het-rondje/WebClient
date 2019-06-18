@@ -1,0 +1,10 @@
+<table style="width:100%">
+  <tr>
+    <th>user id</th>
+    <th>public key</th> 
+  </tr>
+  <tr *ngFor="let key of keys">
+    <td>{{key._id}}</td> 
+    <td>{{key.publicKey}}</td>
+  </tr>
+</table>

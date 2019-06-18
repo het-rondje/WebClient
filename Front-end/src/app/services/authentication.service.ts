@@ -55,7 +55,7 @@ export class AuthenticationService {
       })
     };
 
-    return this.http.post('http://159.65.197.36:3000/api/users/' + id, body, this.httpOptions)
+    return this.http.post('http://localhost:3000/api/users/' + id, body, this.httpOptions)
       .pipe(
         map(result => {
           console.log(result)
@@ -94,9 +94,10 @@ export class AuthenticationService {
     try {
       var encrypt = new jsencrypt.JSEncrypt();
       encrypt.setPublicKey(privateKey);
-      console.log(JSON.stringify(data));
-      console.log(encrypt.encrypt(JSON.stringify(data)));
-      return encrypt.encrypt(JSON.stringify(data));
+      //console.log(JSON.stringify(data));
+      //console.log(encrypt.encrypt(JSON.stringify(data)));
+      console.log(encrypt.getKey().encrypt(JSON.stringify(data)))
+      return encrypt.getKey().encrypt(JSON.stringify(data));
 
       //return crypto.AES.encrypt(JSON.stringify(data), privateKey).toString();
     } catch (e) {

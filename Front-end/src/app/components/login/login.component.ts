@@ -24,19 +24,19 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     //this.auth.login(this.privateKey, this.id).subscribe(response => {
-    this.auth.login(this.hardcodedKey, this.hardcodedId).subscribe(response => {
-
-      console.log(response)
-      if (this.auth.isLoggedIn())
-        this.router.navigateByUrl('/')
-    })
-
     this.auth.login(this.hardcodedKeyWithEnter, this.hardcodedId).subscribe(response => {
 
       console.log(response)
       if (this.auth.isLoggedIn())
         this.router.navigateByUrl('/')
     })
+
+    // this.auth.login(this.hardcodedKeyWithEnter, this.hardcodedId).subscribe(response => {
+
+    //   console.log(response)
+    //   if (this.auth.isLoggedIn())
+    //     this.router.navigateByUrl('/')
+    // })
   }
 
 }

@@ -32,17 +32,18 @@ export class ChatComponent implements OnInit {
 
     this.userService.selectedUserAsObservable.subscribe(data => {
       this.selectedUser = data;
+      /*
       setTimeout(() => {
         this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
-      }, 400)
+      }, 400)*/
     });
     this.userService.getSelectedUser();
     this.chatService.joinRoom();
-    this.simpleBar = new SimpleBar(this.elementRef.nativeElement);
+    /*this.simpleBar = new SimpleBar(this.elementRef.nativeElement);*/
   }
 
   onResize() {
-    this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
+   // this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
   }
 
   sendMessage() {
@@ -50,7 +51,7 @@ export class ChatComponent implements OnInit {
       this.chatService.sendMessage(this.text);
       this.text = "";
     }
-    this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
+    //this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
 
   }
 }

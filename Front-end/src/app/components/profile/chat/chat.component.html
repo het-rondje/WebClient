@@ -1,5 +1,5 @@
 <div class="boxz profilePart" (window:resize)="onResize($event)">
-  <div class="chat" data-simplebar #elementRef>
+  <div class="chat" data-simplebar  #scrollMe [scrollTop]="scrollMe.scrollHeight">
     <div id=" message" *ngFor="let message of chatService.messages">
       <!-- <span class="chat_size">{{message.sender?.firstName}}</span>-->
       <p><span class="chat_size">Username:</span> {{message.text}}</p>

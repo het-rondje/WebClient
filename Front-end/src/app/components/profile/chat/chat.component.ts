@@ -24,26 +24,22 @@ export class ChatComponent implements OnInit {
 
   constructor(private chatService: ChatService, private userService: UserService) { }
 
-  ngAfterViewInit() {
-    console.log(this.simpleBar.getScrollElement());
-  }
-
   ngOnInit() {
 
     this.userService.selectedUserAsObservable.subscribe(data => {
       this.selectedUser = data;
-      /*
       setTimeout(() => {
+        console.log('scrollTop: ' + this.simpleBar.getScrollElement().scrollTop);
+        console.log('scrollHeight: ' + this.simpleBar.getScrollElement().scrollHeight);
         this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
-      }, 400)*/
+      }, 400);
     });
+    this.simpleBar = new SimpleBar(this.elementRef.nativeElement);
     this.userService.getSelectedUser();
     this.chatService.joinRoom();
-    /*this.simpleBar = new SimpleBar(this.elementRef.nativeElement);*/
   }
 
   onResize() {
-   // this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
   }
 
   sendMessage() {
@@ -51,7 +47,8 @@ export class ChatComponent implements OnInit {
       this.chatService.sendMessage(this.text);
       this.text = "";
     }
-    //this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
-
+    setTimeout(() => {
+      this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
+    }, 100);
   }
 }

@@ -15,7 +15,8 @@ import { OverviewItemComponent } from './components/overview/overview-item/overv
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { PickerModule } from '@ctrl/ngx-emoji-mart'
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { PublicKeysComponent } from './/components/public-keys/public-keys.component'
 
 
 declare const videojs: any;
@@ -31,7 +32,8 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
     StreamComponent,
     ChatComponent,
     NavbarComponent,
-    OverviewItemComponent
+    OverviewItemComponent,
+    PublicKeysComponent
   ],
   imports: [
     BrowserModule,

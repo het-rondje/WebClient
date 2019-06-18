@@ -49,4 +49,8 @@ export class UserService {
   getById(id: number) {
     return this.http.get(`${environment.apiUrl}/users/` + id);
   }
+
+  getViewers(id:String){
+    return this.http.get(`${environment.apiUrl}/users/` + id + '/viewers')
+  }
 }

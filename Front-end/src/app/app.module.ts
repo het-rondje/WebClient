@@ -20,6 +20,9 @@ import { MatchHeightDirective } from './directives/match-height.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { RouterModule } from '@angular/router';
+
+
 
 library.add(fas);
 
@@ -48,7 +51,9 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    RouterModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

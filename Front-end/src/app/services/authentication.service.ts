@@ -93,10 +93,16 @@ export class AuthenticationService {
   private encryptData(data, privateKey: string) {
     try {
       var encrypt = new jsencrypt.JSEncrypt();
-      encrypt.setPublicKey(privateKey);
-      console.log(JSON.stringify(data));
-      console.log(encrypt.encrypt(JSON.stringify(data)));
-      return encrypt.encrypt(JSON.stringify(data));
+
+      encrypt.setPrivateKey(privateKey);
+
+      var signature = encrypt.getKey().sign(data, crypto.SHA256, "sha256");
+
+
+     //encrypt.setPublicKey(privateKey);
+      //console.log(JSON.stringify(data));
+      console.log(signature);
+      return signature;
 
       //return crypto.AES.encrypt(JSON.stringify(data), privateKey).toString();
     } catch (e) {

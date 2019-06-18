@@ -1,29 +1,61 @@
-div.ex3 {
-    background-color: #e8e5e5;
-    width: auto;
-    height:auto;
-    overflow: auto;
-}
 .messages {
-    height: 70%;
+    height: 100%;
 }
 
-.artigo_nome {
-    max-width: 100%;
-    padding: 10px;
-    word-break: break-all; /* optional */
+p {
+    color: white;
+    margin-bottom: 0.4rem;
+    font-size: 0.9em;
 }
 
-.chat_size{
+.chat_size {
     color:blue;
-    font-weight:bold
+    font-weight:bold;
+    font-size: 0.9em;
 }
 
-.inline-p {
-    
+.no-border {
+    border-radius: 0 !important;
+}
+
+.btn-primary {
+    background-color: #D2302E;
+    border-color: #D2302E;
+}
+
+.btn-primary:focus {
+    background-color: #D2302E;
+    border-color: #D2302E;
+    box-shadow: 0 0 0 0.2rem rgba(210, 49, 46, 0.438);
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background-color: white;
+    border-color: #D2302E;
+    color: #D2302E;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem rgba(210, 49, 46, 0.438);
+    border-color: #D2302E;
+}
+
+.inline-p {  
     display: inline;
 }
-
-#centerButton{
-    margin-left: 37%;
+.boxz {
+    width: 339px;
+    min-width: 339px;
+    background-color: #141414;
+    max-height: -webkit-fill-available;
+    box-shadow: 8px 6px 10px -2px rgba(0,0,0,.2);
 }
+
+.chat { 
+    padding: 10px;
+    min-width: 339px;
+    overflow-y: auto;
+    word-break: break-all; 
+    max-height: -webkit-fill-available;
+    
+}
+

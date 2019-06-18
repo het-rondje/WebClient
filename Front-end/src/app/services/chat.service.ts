@@ -25,37 +25,37 @@ export class ChatService {
     private userService: UserService) {
 
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    this.socket.on('message', (data) => { 
+    this.socket.on('message', (data) => {
       console.log("as data: " + data.text);
       this.messages.push(data);
-     })
+    })
 
-     this.userService.selectedUserAsObservable.subscribe(data => {
+    this.userService.selectedUserAsObservable.subscribe(data => {
       this.selectedUser = data;
     })
     this.userService.getSelectedUser();
   }
 
-  joinRoom(){
+  async joinRoom() {
     this.socket.emit("join", this.selectedUser._id);
     console.log('joined room: ' + this.selectedUser._id)
     this.getChatHistory();
   }
 
-  getChatHistory(){
+  getChatHistory() {
     this.http.get<User>(`${environment.apiUrl}/users/` + this.selectedUser._id).pipe(first()).subscribe(user => {
       this.messages = user.messages;
-  });
+    });
 
   }
 
-  sendMessage(msg: string){
+  sendMessage(msg: string) {
 
-    var message: Message = {     
+    var message: Message = {
       sender: this.currentUser,
       text: msg,
       roomId: this.selectedUser._id
-  }
+    }
 
     this.socket.emit("message", message);
     console.log('send message: ' + message.roomId);

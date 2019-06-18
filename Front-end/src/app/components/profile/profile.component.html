@@ -1,15 +1,20 @@
 <app-navbar></app-navbar>
 
-<main role="main" class="container">
+<main role="main" class="container-fluid">
+  <div class="container-fluid">
+    <h1 class="display-6 ">{{selectedUser.firstName}} {{selectedUser.lastName}} <small
+        id="id">{{selectedUser._id}}</small></h1>
+  </div>
 
-  <h1 class="display-4 ">stream of user: {{selectedUser.firstName}} {{selectedUser.lastName}} </h1>
+  <div class="d-flex" myMatchHeight="profilePart">
+    <div class="flex-grow-1 profilePart" id="stream">
+      <div class="container-fluid">
 
-  <div class="row">
-    <div class="col-sm-8 mb-3" id="stream">
-        <app-stream></app-stream>
+      </div>
+      <app-stream></app-stream>
     </div>
-    <div class="col-sm-4" id="chat">
-        <app-chat></app-chat>
+    <div class="flex-col d-none d-lg-block" id="chat">
+      <app-chat></app-chat>
     </div>
   </div>
 </main>

@@ -78,10 +78,10 @@ export class AuthenticationService {
 
   private digitalSignature(privateKey: string, content: any) {
     //Hashing content:
-    this.hashedMessage = this.hash(content);
+    //this.hashedMessage = this.hash(content);
 
     //Return signature
-    return this.encryptData(this.hashedMessage, privateKey);
+    return this.encryptData(content, privateKey);
   }
 
   //Hashes a given string message with sha256

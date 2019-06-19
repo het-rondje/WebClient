@@ -8,6 +8,7 @@ export class User {
     dateJoined: Date;
     messages: Message[];
     viewers: number;
+    online : boolean;
 }
 
 //currently a fictional model

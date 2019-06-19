@@ -1,2 +1,9 @@
-<video id="videoElement"  width='100%' class="vjs-default-skin pr-4" controls></video>
-
+<video id="videoElement" width='100%' class="vjs-default-skin pr-4 profilePart" controls></video>
+<div class="container-fluid">
+    <div class="d-flex flex-row-reverse">
+        <div class="m-2 red">
+            <fa-icon [icon]="['fas', 'eye']" size="lg"></fa-icon>
+        </div>
+        <p class="white text-center">{{viewerCount}}</p>
+    </div>
+</div>

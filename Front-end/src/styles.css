@@ -1,4 +1,5 @@
 @import "~@ctrl/ngx-emoji-mart/picker";
+@import '~simplebar/dist/simplebar.css';
 
 body{
   height: 100%;
@@ -19,7 +20,7 @@ body::before{
   bottom: 0;
   right: 0;
   z-index: -1;
-  background: linear-gradient(to top, #5e5e5e, #1f1f1f);
+  background: linear-gradient(to top, #141414, #1f1f1f);
 }
 
   .box{
@@ -73,12 +74,6 @@ body::before{
     background: #a01515;
   }
 
-  #ContainerRight {
-    border-radius: 5px;
-    background-color: #e8e5e5;
-    padding: 20px;
-    height: 100%;
-    width: 300px;
-    float: right;
-    margin-right: 100px
+  .simplebar-scrollbar::before {
+    background-color: white;
 }

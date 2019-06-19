@@ -3,3 +3,13 @@
     height: auto;
     margin-left: 15px;
 }
+
+.white {
+    margin-top: auto;
+    color: white;
+    margin-bottom: auto;
+}
+
+.red {
+    color: #D2302E;
+}

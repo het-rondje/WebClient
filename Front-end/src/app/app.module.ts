@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,8 +15,13 @@ import { OverviewItemComponent } from './components/overview/overview-item/overv
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { PickerModule } from '@ctrl/ngx-emoji-mart'
+import { PublicKeysComponent } from './/components/public-keys/public-keys.component'
+import { MatchHeightDirective } from './directives/match-height.directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
+library.add(fas);
 
 declare const videojs: any;
 const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
@@ -31,16 +36,18 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
     StreamComponent,
     ChatComponent,
     NavbarComponent,
-    OverviewItemComponent
+    OverviewItemComponent,
+    PublicKeysComponent,
+    MatchHeightDirective,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    PickerModule,
     FormsModule,
     HttpClientModule,
+    FontAwesomeModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [],

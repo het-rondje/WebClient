@@ -3,10 +3,11 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
+import { map, timestamp } from 'rxjs/operators';
 import * as hash from 'hash.js';
 import * as crypto from 'crypto-js';
 import * as jsencrypt from 'jsencrypt';
+import * as node_rsa from 'node-rsa'
 
 import { Router } from '@angular/router';
 
@@ -22,6 +23,7 @@ export class AuthenticationService {
   private hashedMessage: string;
   public signature: string;
   private httpOptions = {};
+  private timestamp;
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -39,15 +41,17 @@ export class AuthenticationService {
     let body = {}
 
     let date = new Date;
-    let timestamp = date.getTime().toString(); //FORMAT??
+    // let timestamp = date.getTime().toString(); //FORMAT??
+    this.timestamp = date.getTime().toString();
+    let test = 'Test';
 
-    const timeSignature = this.digitalSignature(privateKey, timestamp);
+    const timeSignature = this.encryptData(privateKey, this.timestamp);
 
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         // 'signature': sig, // body signature NOT FOR LOGIN
-        'timestamp': timestamp,
+        'timestamp': this.timestamp,
         'signature': timeSignature,
         'timesignature': timeSignature,
         'userid': id,
@@ -55,12 +59,12 @@ export class AuthenticationService {
       })
     };
 
-    return this.http.post('http://localhost:3000/api/users/' + id, body, this.httpOptions)
+    return this.http.post('http://159.65.197.36:3001/api/users/' + id, body, this.httpOptions)
       .pipe(
         map(result => {
           console.log(result)
 
-          let user: User =new User;
+          let user: User = new User;
           let json = JSON.stringify(result);
           let obj = JSON.parse(json)
           user._id = obj.user.id;
@@ -75,49 +79,20 @@ export class AuthenticationService {
       )
   }
 
-
-  private digitalSignature(privateKey: string, content: any) {
-    //Hashing content:
-    //this.hashedMessage = this.hash(content);
-
-    //Return signature
-
-    console.log('encrypting data: ' + content.replace('"', '') + ' with key: ' + privateKey);
-    return this.encryptData(content, privateKey);
-  }
-
-  //Hashes a given string message with sha256
-  private hash(message: string) {
-    return hash.sha256().update(message).digest('hex');
-  }
-
   //Encrypts given data with this.encryptSecretKey
   private encryptData(data, privateKey: string) {
-    try {
-      var encrypt = new jsencrypt.JSEncrypt();
+    // try {
 
-      //var signature = encrypt.getKey().sign(data, crypto.SHA256, "hex");
+    //   const privateKey2 = new node_rsa();
+    //   privateKey2.importKey('-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCkf37AmkyYbTCH\nLb4DqZJiMAk/+bB2f0W5DdiS6gW5ynRe6vBrCgWNV2ZlxR5LDuLon3UCflWzGKbV\nh3UR4ElfTp0vAT/uuiAEi+wqQ/rTIlLllPKcbiTU1Agd35zjuV6DuyDMuSU1Q8R2\nWL1MQc3TgugfY1xh2zPaXVGJiC1MNFvMiVQczxtMGtMTU3Qpa72u4IUyCFr0fj2r\nfTNVwpBOTzBhVojkNLKExiV2IJSJ3MhICqR3zdCT1sCvQXxqyUL/ypb7uy7ShOlu\n4ujPf5YOL6SCVa0yvLvzQ0vh+RDyFqy8XJxdSTjxlzPUrXZq1M0ZC7P2nFrimTP+\nFEYrec9zAgMBAAECggEAdc/eHuEjhHOHMvl+wi67aVkP9uLEEEoczGlvN+Elkqe9\n6pEG+RJnYZA8BR1FEeqqdoJlkhCbHjbEnd9y6AejZP/vsU+K01Y4QilYTfj79iT6\nC/U+QOzdshPdcE/LlIkZeO0Xk6fyTxCm7z+k662hVR/HUVufOXJ906HMGN0P3Cfn\nCSMwd/cmmDD21MvPopxGh/5fGchbNyODXC5ghdIr4Qxycxb/z+m56mD1CQ6BEfJB\n2xTUiSwJ2Wne4N7lCcB8aSTDJ1p8Xecn49QRHrznIN02CEaUaZBB67BJTITOO+Sy\nxoEYDHMHpWS04sJSYAHWWlA1KEVPxFOcnTtdJO9+EQKBgQDq579jHUGvd7eSDI2K\n9Uh94zbyyC5DY/q1BPRTeR57jomMV4h7mRguJgJno0xKnxPgJsK/km5eTv2SBKze\nXal6q4lCskPNOLiReBlafQj39TTjHuX55ECa370SeISYBxvg11gSBkwyYYSoA7Eq\nZ8gAeFP5LdzwRN4G29qQaUix6QKBgQCzRSanFUtsXiOs2w9uHOBZI652uNozfgrM\ndpgp+hFNKlJqEaltlLY4dYwTEkTEsqNnwo+UZ3HrWnbuIQ/Fm0FxyQFQCDnjOKQh\nqxhlQPBrcOSCNfCvxB2ctIBjb95SYBGvCoxZs9P2B28VrXYzgp2AJ59Nsv0aM9vz\nT1pZ0Rxg+wKBgQCgROG1k/5+42VhxiLETjnZei7BUocN/6bL3sd8NETx8/wwvoAm\nI/v1cIVvhGDHAOYkpw10e0nGGoqzF3GCfdDmGycZVFsiJ7L1vUU/EdQOqUQeObSa\n3HqfsEtl0MhWmXMR4pr6IUXXkeVaZLp5vjkc6PwSJJJ7c+EwOMxUfyDUEQKBgHEs\nsNA+s1UAwYj46u7bMA9WZWfyH17uraaTIFEv3AhZNZpc+BeEEN3n57yKhfufw2VY\nAQjxnYu1muuO18Qq1dAd08RQzSrTsVrIByi1LJLHvJsvrnloWEF7+qnMEBD1MXTO\nNfjTfHcQDmMjFUJDrWcgnIOTAhKutqcOa73UNBRNAoGAA/0rq0wAFAKvH2Q/0nyL\nE39cyuWxwZW13xdmUWtlSZfK6Xvv1EjOL5XK9RxLDN/s+txmcFFeZom4kvVMDVH0\n2lWHVMafWtUcJ9RE+TX+vZJ9LvqoanRXJxU25+woKIztMzHREVk3mqhZXOk2dz1r\npu9BwI7BnQLkbtqPjFQfAGQ=\n-----END PRIVATE KEY-----');
+    //   const signature = privateKey2.sign(Buffer.from(this.timestamp), 'hex', 'hex');
+    //   console.log(signature);
+    //   return signature;
 
-
-      encrypt.setPrivateKey(privateKey);
-      var signature = encrypt.getKey().sign(data, crypto.SHA256, "'RSA-SHA256");
-
-/*
-      const sign = crypto.createSign('RSA-SHA256');
-
-      sign.update(data);
-      const signature = sign.sign(privateKey, 'hex');
-*/
-
-     //encrypt.setPublicKey(privateKey);
-      //console.log(JSON.stringify(data));
-      console.log(signature);
-      return signature;
-
-      //return crypto.AES.encrypt(JSON.stringify(data), privateKey).toString();
-    } catch (e) {
-      console.log(e);
-    }
+    // } catch (e) {
+    //   console.log(e);
+    // }
+    return ""
   }
 
   logout() {
@@ -128,7 +103,7 @@ export class AuthenticationService {
     this.router.navigate(['/login'])
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     return this.loggedIn;
   }
 

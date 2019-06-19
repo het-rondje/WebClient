@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private hardcodedKey: string = "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQChuJMuqiJ6SDAs\nh+btr1O/P9aMRNiCc0l5J485Efk4hbBL7Q19ujk5pBm9O3EDbqU3j9t07sxaxE9u\nQdd2a5QaZzUaD9MaPsu08ztdD3E18TDx2afQ/nLaBntj/hepoGhm39rppXADW6NX\n3fny8IlO1OPaCPTsTnVzS7VLJ9xO095x/JOKr960UGYa6xYzQeo9AMbJCQr57QLl\n4lRrLdA7LuuhKvDPwHjAOLvbjP57DQGkkBf8CchvbpbwOeUH11GbiyidjGqUXpvs\nNQpV28azt8hFdaymdtEwqBWf7tzPXyPJPwfsvXBQ/2Vi7cy/ecCHFv43cWfcwN09\nLs/Aym0RAgMBAAECggEAUsWMl1q+8MVX2sLoIAkXnRBIeFyYUBQ/q8HinTwkyZgr\nRoEa4ZnZxjXGcsMksbQE3e5ETZIXh/FoEi+i3tpq4CSo2iD1VD6FtqSzYosPz6MW\nAQL80IwbLpoYt3IKnGgcZ2L1wZZKQX26mbNkRcJ1FKMDx8nDydrSZGOAc+n/6VvY\nzA0hsJWQdd4Iw/lcu6Bl3ZkA3LdIqgU/eSdWAKeW3p40nfhTjGKja7pNw3FW90Iw\n26IjOiFpiZhpyesV39UiV5pLxgGP4OJ8ZJ2g/Ylu5+fBeg/XoSbxdgByI15tp6Fm\nBIn4n0I9dnoGgJtMLW1S+nht0cuhXsr6VAeziB3aAQKBgQDUL7vZqnVt7m0dunGZ\nLA/gQ8NbE65ba+d4PFlWlzS6yesgadFiQYId94S9HWbyWQq4DJphSBfvkvCgRmVN\nfaQ/3PQOZh0AywvW4goMi3uVu8/kTh3qDOs0zJY4dPsoFVxD7LHvjiy7XaYdU0WE\n1V+EUzGLlE9ntKfle+L8DQnlcQKBgQDDHTcejzCYS7nxaQOHz+xucPLiFyZGIbd4\nX3fTcpeDKI3iKBn+X8s4RuZ2M2ASAUJD/jiQOly2fJqiTe8+lPnOHJyOcR92Gd5d\nSC9zkuc2kVOmvmPzaAwo18lrg3apxjTtgg0RN2oHrv4ts/u9CYMOuai9nrAD+Cp7\nd8zD5c6xoQKBgQC1IlKQS+2W/LR1blXPVkfvQKmiNDjhnkmo4Iu7WbUPx5NKxkqS\nQC3dexD7h//73ntCBrA7X5nfUGbNy4prDliKlApbyFv181+V/rxpXSEQ/5VG5lCv\nHnwjRIrwgxxsaV+sNIDpaUtSX22RFyb/cE7r3UEsUF1AwH2bb5ijZlYOYQKBgECz\n3oR2zZGjgx0ISxBtpiUVtaW+MYYORk5Xsl/fX1kySKLX047ka3rVIDXQYap22me7\n1TwW7onhllH+cDkbpB9yo4QlBV7fwzrB5mJ4M86HsOrZtkGQnn+o13Wc2ewA+6pL\nd1PfQX0czdOQHQoaLmjiro97ITmfwU7CcpgADGQhAoGBAI0/xWxFArVYJDDCIye5\nIVQBZJOzSw/bfGJUSEYfu4kcq8cP9MOMrLSx4/StiNevRPXwzit/j89eWQEf/NX3\ni/JwfiUVdiGD1+LGc7sWAdI1+Jdh8FePa7QlSkFVDKL9yABl/iLW/vA5ZNfIhz7q\n6zKabWFS4COVsCB77GNE1Bll\n-----END PRIVATE KEY-----";
+  private hardcodedKey: string = '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCkf37AmkyYbTCH\nLb4DqZJiMAk/+bB2f0W5DdiS6gW5ynRe6vBrCgWNV2ZlxR5LDuLon3UCflWzGKbV\nh3UR4ElfTp0vAT/uuiAEi+wqQ/rTIlLllPKcbiTU1Agd35zjuV6DuyDMuSU1Q8R2\nWL1MQc3TgugfY1xh2zPaXVGJiC1MNFvMiVQczxtMGtMTU3Qpa72u4IUyCFr0fj2r\nfTNVwpBOTzBhVojkNLKExiV2IJSJ3MhICqR3zdCT1sCvQXxqyUL/ypb7uy7ShOlu\n4ujPf5YOL6SCVa0yvLvzQ0vh+RDyFqy8XJxdSTjxlzPUrXZq1M0ZC7P2nFrimTP+\nFEYrec9zAgMBAAECggEAdc/eHuEjhHOHMvl+wi67aVkP9uLEEEoczGlvN+Elkqe9\n6pEG+RJnYZA8BR1FEeqqdoJlkhCbHjbEnd9y6AejZP/vsU+K01Y4QilYTfj79iT6\nC/U+QOzdshPdcE/LlIkZeO0Xk6fyTxCm7z+k662hVR/HUVufOXJ906HMGN0P3Cfn\nCSMwd/cmmDD21MvPopxGh/5fGchbNyODXC5ghdIr4Qxycxb/z+m56mD1CQ6BEfJB\n2xTUiSwJ2Wne4N7lCcB8aSTDJ1p8Xecn49QRHrznIN02CEaUaZBB67BJTITOO+Sy\nxoEYDHMHpWS04sJSYAHWWlA1KEVPxFOcnTtdJO9+EQKBgQDq579jHUGvd7eSDI2K\n9Uh94zbyyC5DY/q1BPRTeR57jomMV4h7mRguJgJno0xKnxPgJsK/km5eTv2SBKze\nXal6q4lCskPNOLiReBlafQj39TTjHuX55ECa370SeISYBxvg11gSBkwyYYSoA7Eq\nZ8gAeFP5LdzwRN4G29qQaUix6QKBgQCzRSanFUtsXiOs2w9uHOBZI652uNozfgrM\ndpgp+hFNKlJqEaltlLY4dYwTEkTEsqNnwo+UZ3HrWnbuIQ/Fm0FxyQFQCDnjOKQh\nqxhlQPBrcOSCNfCvxB2ctIBjb95SYBGvCoxZs9P2B28VrXYzgp2AJ59Nsv0aM9vz\nT1pZ0Rxg+wKBgQCgROG1k/5+42VhxiLETjnZei7BUocN/6bL3sd8NETx8/wwvoAm\nI/v1cIVvhGDHAOYkpw10e0nGGoqzF3GCfdDmGycZVFsiJ7L1vUU/EdQOqUQeObSa\n3HqfsEtl0MhWmXMR4pr6IUXXkeVaZLp5vjkc6PwSJJJ7c+EwOMxUfyDUEQKBgHEs\nsNA+s1UAwYj46u7bMA9WZWfyH17uraaTIFEv3AhZNZpc+BeEEN3n57yKhfufw2VY\nAQjxnYu1muuO18Qq1dAd08RQzSrTsVrIByi1LJLHvJsvrnloWEF7+qnMEBD1MXTO\nNfjTfHcQDmMjFUJDrWcgnIOTAhKutqcOa73UNBRNAoGAA/0rq0wAFAKvH2Q/0nyL\nE39cyuWxwZW13xdmUWtlSZfK6Xvv1EjOL5XK9RxLDN/s+txmcFFeZom4kvVMDVH0\n2lWHVMafWtUcJ9RE+TX+vZJ9LvqoanRXJxU25+woKIztMzHREVk3mqhZXOk2dz1r\npu9BwI7BnQLkbtqPjFQfAGQ=\n-----END PRIVATE KEY-----';
 
-  private hardcodedId: string = "huYRrduZ9";
+  private hardcodedId: string = "d_cT3EhFc";
 
   private privateKey: string;
   private id: string;
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     //this.auth.login(this.privateKey, this.id).subscribe(response => {
-    this.auth.login(this.hardcodedKey, this.hardcodedId).subscribe(response => {
+    this.auth.login(this.privateKey, this.id).subscribe(response => {
 
       console.log(response)
       if (this.auth.isLoggedIn())

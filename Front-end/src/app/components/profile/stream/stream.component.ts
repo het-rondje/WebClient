@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as flvjs from '../../../../../node_modules/flv.js/dist/flv';
 import { UserService } from '../../../services/user.service';
-import { User } from 'src/app/models/user';
+import { User } from '../../../models/user';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class StreamComponent implements OnInit {
   selectedUser: User;
   viewerCount: any;
   
-  constructor(private UserService:UserService) { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
     //if (flvjs.isSupported()) {
@@ -39,8 +39,8 @@ export class StreamComponent implements OnInit {
   }
 
  getViewers(){
-  this.selectedUser = this.UserService.getSelectedUser();
-      this.UserService.getViewers(this.selectedUser._id).subscribe( data => {
+  this.selectedUser = this.userService.getSelectedUser();
+      this.userService.getViewers(this.selectedUser._id).subscribe( data => {
        this.viewerCount = data['count'];
        console.log(data)
       })

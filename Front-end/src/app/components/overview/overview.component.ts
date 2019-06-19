@@ -8,14 +8,13 @@ import { User } from '../../models/user';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit{
- users;
+  users: User[] = [];
 
   // public users: { name: string, imgUrl: string, title: string, status: boolean }[] = [];
 
   constructor(private userService:UserService) { }
 
   ngOnInit() {
-    
     this.userService.users.subscribe(data => {
       this.users = data;
       console.log(data);

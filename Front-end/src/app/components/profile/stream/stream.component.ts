@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as flvjs from '../../../../../node_modules/flv.js/dist/flv';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-stream',

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Message } from '../../../models/message';
 import { ChatService } from '../../../services/chat.service';
-import {UserService} from '../../../services/user.service';
+import { UserService } from '../../../services/user.service';
 
 import { User } from '../../../models/user';
 import SimpleBar from 'simplebar';
@@ -27,15 +27,12 @@ export class ChatComponent implements OnInit {
     this.userService.selectedUserAsObservable.subscribe(data => {
       this.selectedUser = data;
       setTimeout(() => {
-        //console.log('scrollTop: ' + this.simpleBar.getScrollElement().scrollTop);
-        //console.log('scrollHeight: ' + this.simpleBar.getScrollElement().scrollHeight);
         this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
       }, 400);
     });
     this.simpleBar = new SimpleBar(this.elementRef.nativeElement);
     this.userService.getSelectedUser();
     this.chatService.joinRoom();
-
   }
 
   onResize() {

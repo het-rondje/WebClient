@@ -1,17 +1,30 @@
 <app-navbar></app-navbar>
 
-<main role="main" class="container-fluid">
+<main role="main" class="container-fluid h-100">
   <div class="container-fluid">
     <h1 class="display-6 ">{{selectedUser?.firstName}} {{selectedUser?.lastName}} <small
         id="id">{{selectedUser._id}}</small></h1>
   </div>
 
-  <div class="d-flex" myMatchHeight="profilePart">
-    <div class="flex-grow-1 profilePart" id="stream">
+  <!-- <div class="d-flex main">
+    <div class="left" id="stream">
       <app-stream></app-stream>
     </div>
-    <div class="flex-col d-none d-lg-block" id="chat">
+    <div class="flex-col d-none d-lg-block right" id="chat">
       <app-chat></app-chat>
     </div>
-  </div>
+  </div> -->
+
+  <table class="h-100">
+    <tr class="h-100">
+      <td class="vi aspect-ratio-box">
+        <div class="aspec-ratio-box-inside">
+          <app-stream></app-stream>
+        </div>
+      </td>
+      <td class="ch" valign="bottom">
+        <app-chat></app-chat>
+      </td>
+    </tr>
+  </table>
 </main>

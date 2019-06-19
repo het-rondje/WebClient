@@ -42,7 +42,6 @@ export class StreamComponent implements OnInit {
   this.selectedUser = this.userService.getSelectedUser();
       this.userService.getViewers(this.selectedUser._id).subscribe( data => {
        this.viewerCount = data['count'];
-       console.log(data)
       })
  }
 

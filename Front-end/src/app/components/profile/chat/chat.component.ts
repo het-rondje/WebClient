@@ -35,6 +35,7 @@ export class ChatComponent implements OnInit {
     this.simpleBar = new SimpleBar(this.elementRef.nativeElement);
     this.userService.getSelectedUser();
     this.chatService.joinRoom();
+
   }
 
   onResize() {

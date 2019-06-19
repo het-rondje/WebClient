@@ -54,10 +54,13 @@ export class ChatService {
     var message: Message = {
       sender: this.currentUser,
       text: msg,
-      roomId: this.selectedUser._id
+      roomId: this.selectedUser._id,
+      firstName: this.currentUser.firstName,
+      lastName: this.currentUser.lastName
     }
 
     this.socket.emit("message", message);
     console.log('send message: ' + message.roomId);
+    console.log("--------user " + this.currentUser._id )
   }
 }

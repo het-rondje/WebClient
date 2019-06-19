@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../../../models/message';
-import { ChatService } from 'src/app/services/chat.service';
-import {UserService} from 'src/app/services/user.service';
+import { ChatService } from '../../../services/chat.service';
+import {UserService} from '../../../services/user.service';
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/models/user';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-chat',

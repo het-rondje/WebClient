@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChatService } from 'src/app/services/chat.service';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user';
+import { ChatService } from '../../services/chat.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 
 
 @Component({

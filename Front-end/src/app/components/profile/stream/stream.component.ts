@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as flvjs from 'node_modules/flv.js/dist/flv';
+import * as flvjs from '../../../../../node_modules/flv.js/dist/flv';
 
 @Component({
   selector: 'app-stream',

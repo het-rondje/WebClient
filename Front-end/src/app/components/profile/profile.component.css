@@ -1,4 +1,16 @@
 h1{
-    color:white;
-    margin: 20px;
+    color: rgb(233, 233, 233);
+    margin-left: 8px;
+    margin-top: 20px;
+}
+
+.card {
+    margin-top: 10px;
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px; 
+}
+
+ #id {
+    font-size: 0.4em;
+    color: #D2302E;
 }

@@ -1,28 +1,21 @@
-<div class="chat" id="ContainerRight">
-    <div class="artigo_nome" style="overflow:auto; height:400px;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-
-    <div id="message" *ngFor="let message of chatService.messages">
-     <!-- <span class="chat_size">{{message.sender?.firstName}}</span>-->
-     <span class="chat_size">een user</span>
-      <p>{{message.text}}</p>
-    </div> 
+<div class="boxz profilePart" (window:resize)="onResize($event)">
+  <div class="chat" data-simplebar #elementRef>
+    <div id=" message" *ngFor="let message of chatService.messages">
+      <!-- <span class="chat_size">{{message.sender?.firstName}}</span>-->
+      <p><span class="chat_size">Username:</span> {{message.text}}</p>
+    </div>
   </div>
   <div class="input">
-    <form>
-      <div class="form-group">
-        <input 
-          type="content"
-          placeholder="Add your comment here"
-          [(ngModel)]="text"
-          class="form-control"
-          name="something"
-        />
+    <div class="d-flex">
+      <div class="flex-grow-1">
+        <input type="content" (keydown.enter)="sendMessage()" placeholder=" Add your comment here" [(ngModel)]="text"
+          class="form-control no-border" name="something" />
       </div>
-      <button class="btn btn-primary" id="centerButton" (click)="sendMessage()" type="submit">
-        Send
-      </button>
-
-      <emoji-mart title="Pick your emoji…" (emojiClick)="addEmoji($event)"></emoji-mart>
-    </form>
+      <div>
+        <button class="btn btn-primary no-border" id="centerButton" (click)="sendMessage()" type="submit">
+          <fa-icon [icon]="['fas', 'paper-plane']" size="lg"></fa-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

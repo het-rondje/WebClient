@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../app/models/user';
+import { User } from '../models/user';
+import { PublicUser } from '../models/publicUser';
 import { environment } from '../../environments/environment';
 import { first } from 'rxjs/operators';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -17,6 +18,7 @@ export class UserService {
   private usersSource = new BehaviorSubject([]); 
   public users = this.usersSource.asObservable();
   private localUsers : User[] = [];
+  public userKeys: any[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +35,10 @@ export class UserService {
     return this.selectedUser;
   }
 
+  getPublicKeys() {
+    return this.http.get<PublicUser[]>(`${environment.apiUrl}/publickeys`).pipe(first());
+  }
+
   getUsers() {
     this.http.get<User[]>(`${environment.apiUrl}/users`).pipe(first()).subscribe(users => {
         this.usersSource.next(users);
@@ -42,5 +48,9 @@ export class UserService {
 
   getById(id: number) {
     return this.http.get(`${environment.apiUrl}/users/` + id);
+  }
+
+  getViewers(id:String){
+    return this.http.get(`${environment.apiUrl}/users/` + id + '/viewers')
   }
 }

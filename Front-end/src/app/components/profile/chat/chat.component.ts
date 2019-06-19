@@ -27,8 +27,8 @@ export class ChatComponent implements OnInit {
     this.userService.selectedUserAsObservable.subscribe(data => {
       this.selectedUser = data;
       setTimeout(() => {
-        console.log('scrollTop: ' + this.simpleBar.getScrollElement().scrollTop);
-        console.log('scrollHeight: ' + this.simpleBar.getScrollElement().scrollHeight);
+        //console.log('scrollTop: ' + this.simpleBar.getScrollElement().scrollTop);
+        //console.log('scrollHeight: ' + this.simpleBar.getScrollElement().scrollHeight);
         this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
       }, 400);
     });

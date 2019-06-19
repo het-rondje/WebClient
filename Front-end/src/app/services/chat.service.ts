@@ -45,6 +45,8 @@ export class ChatService {
   getChatHistory() {
     this.http.get<User>(`${environment.apiUrl}/users/` + this.selectedUser._id).pipe(first()).subscribe(user => {
       this.messages = user.messages;
+      console.log(user.messages);
+      
     });
 
   }

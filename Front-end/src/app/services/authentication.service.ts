@@ -59,7 +59,7 @@ export class AuthenticationService {
       })
     };
 
-    return this.http.post('http://159.65.197.36:3001/api/users/' + id, body, this.httpOptions)
+    return this.http.post(`${environment.apiUrl}/users/` + id, body, this.httpOptions)
       .pipe(
         map(result => {
           console.log(result)

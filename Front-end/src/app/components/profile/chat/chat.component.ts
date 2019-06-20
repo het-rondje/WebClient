@@ -17,6 +17,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   chatHeight: Number;
   simpleBar: SimpleBar;
   prevData: User;
+  messages: Message[] = [];
 
   @ViewChild('elementRef', { static: true }) elementRef: ElementRef;
 
@@ -37,6 +38,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.simpleBar = new SimpleBar(this.elementRef.nativeElement);
     this.userService.getSelectedUser();
     this.chatService.joinRoom();
+
+    this.chatService.messages.subscribe(data => {
+      this.messages = data;
+      console.log(data);
+
+      setTimeout(() => {
+        this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
+      }, 50);
+    })  
   }
 
   onResize() {
@@ -47,8 +57,5 @@ export class ChatComponent implements OnInit, AfterViewInit {
       this.chatService.sendMessage(this.text);
       this.text = "";
     }
-    setTimeout(() => {
-      this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;
-    }, 100);
   }
 }

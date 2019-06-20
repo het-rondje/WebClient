@@ -6,6 +6,7 @@ import { Message } from '../models/message';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 
 import { AuthenticationService } from '../services/authentication.service';
@@ -17,9 +18,12 @@ import { UserService } from './user.service';
 
 
 export class ChatService {
-  messages: Message[] = [];
+  localMessages: Message[] = [];
   currentUser: User;
   selectedUser: User;
+  private messageSource = new BehaviorSubject([]); 
+  public messages = this.messageSource.asObservable();
+
 
   constructor(private http: HttpClient, private socket: Socket, private authenticationService: AuthenticationService,
     private userService: UserService) {
@@ -27,7 +31,11 @@ export class ChatService {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     this.socket.on('message', (data) => {
       console.log("as data: " + data.text);
-      this.messages.push(data);
+      this.localMessages.push(data);
+      this.messageSource.next(this.localMessages);
+      if(data.text.startsWith('!donate')){
+        this.playAudio();
+      }
     })
 
     this.userService.selectedUserAsObservable.subscribe(data => {
@@ -44,11 +52,18 @@ export class ChatService {
 
   getChatHistory() {
     this.http.get<User>(`${environment.apiUrl}/users/` + this.selectedUser._id).pipe(first()).subscribe(user => {
-      this.messages = user.messages;
+      this.localMessages = user.messages;
+      this.messageSource.next(this.localMessages);
       console.log(user.messages);
-      
     });
 
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../../assets/audio/ding-dong-chaturbate-token-sound.mp3";
+    audio.load();
+    audio.play();
   }
 
   sendMessage(msg: string) {

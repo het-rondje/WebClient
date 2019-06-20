@@ -1,6 +1,6 @@
 <div class="boxz h-100" (window:resize)="onResize($event)">
   <div class="chat h-100" data-simplebar #elementRef>
-    <div id=" message" *ngFor="let message of chatService.messages">
+    <div id=" message" *ngFor="let message of messages">
       <!-- <span class="chat_size">{{message.sender?.firstName}}</span>-->
       <p><span class="chat_size" >{{message?.firstName}} {{message?.lastName}}: </span> {{message?.text}}</p>
     </div>

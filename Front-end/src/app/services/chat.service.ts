@@ -52,7 +52,9 @@ export class ChatService {
   }
 
   sendMessage(msg: string) {
+    this.currentUser =  this.userService.getSelectedUser();
 
+    console.log('currentuser: ' + this.currentUser)
     var message: Message = {
       sender: this.currentUser,
       text: msg,

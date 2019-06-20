@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: "http://159.65.197.36:3001/api",
-  socketUrl: "http://159.65.197.36:3000"
+  socketUrl: "http://159.65.197.36:3000",
+  streamURl: "http://159.65.197.36:8000/live",
 };
 
 /*

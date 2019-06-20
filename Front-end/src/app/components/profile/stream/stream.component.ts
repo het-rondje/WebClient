@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as flvjs from '../../../../../node_modules/flv.js/dist/flv';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user';
+import { environment } from '../../../../environments/environment';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class StreamComponent implements OnInit {
       type: 'flv',
       isLive: true,
       //url: 'http://localhost:8000/live/mykey.flv'
-      url: 'http://localhost:8000/live/' + this.userService.getSelectedUser()._id + '.flv'
+      url: `${environment.streamURl}/` + this.userService.getSelectedUser()._id + '.flv'
 
     });
     flvPlayer.attachMediaElement(videoElement);

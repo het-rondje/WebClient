@@ -33,7 +33,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     this.userService.selectedUserAsObservable.subscribe(data => {
       this.prevData = this.selectedUser;
-      this.selectedUser = data;
     });
     this.simpleBar = new SimpleBar(this.elementRef.nativeElement);
     this.userService.getSelectedUser();

@@ -72,6 +72,9 @@ export class AuthenticationService {
           user.lastName = obj.user.lastName;
 
           localStorage.setItem('currentUser', JSON.stringify(user));
+
+          this.currentUserSubject.next(user);
+
           console.log(user)
           this.loggedIn = true;
           return user;

@@ -29,7 +29,7 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -71,8 +71,7 @@ export class AuthenticationService {
           user.firstName = obj.user.firstName;
           user.lastName = obj.user.lastName;
 
-          localStorage.setItem('currentUser', JSON.stringify(user));
-
+          sessionStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
 
           console.log(user)
@@ -100,7 +99,7 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
     this.loggedIn = false;
     this.currentUserSubject.next(null);
     this.router.navigate(['/login'])

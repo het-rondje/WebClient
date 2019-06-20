@@ -33,6 +33,9 @@ export class ChatService {
       console.log("as data: " + data.text);
       this.localMessages.push(data);
       this.messageSource.next(this.localMessages);
+      if(data.text.startsWith('!donate')){
+        this.playAudio();
+      }
     })
 
     this.userService.selectedUserAsObservable.subscribe(data => {
@@ -54,6 +57,13 @@ export class ChatService {
       console.log(user.messages);
     });
 
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../../assets/audio/ding-dong-chaturbate-token-sound.mp3";
+    audio.load();
+    audio.play();
   }
 
   sendMessage(msg: string) {

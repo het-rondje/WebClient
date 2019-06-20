@@ -42,7 +42,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     this.chatService.messages.subscribe(data => {
       this.messages = data;
-      console.log(data);
+      //console.log(data);
 
       setTimeout(() => {
         this.simpleBar.getScrollElement().scrollTop = this.simpleBar.getScrollElement().scrollHeight;

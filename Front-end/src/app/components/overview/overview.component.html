@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<!-- Live streamers: -->
+<div>
+  <h2>Live streamers</h2>
+  <ul>
+    <li *ngFor="let user of users">
+        <a routerLink="/profile/{{user?._id}}" (click)="setSelectedUser(user)" *ngIf="user.online"> 
+          <a href="#"><img src="https://i.imgur.com/9ph4xQn.png" /></a>
+           <h5>{{user?.firstName}} {{user?.lastName }}</h5><small>({{user?._id}})</small>
+     
+      </a>
+    </li>
+  </ul>
+</div> 
+
+<!-- Offline streamers: -->
+<div>
+  <h2>Users that are not streaming</h2>
+<ul>
+  <li *ngFor="let user of users">
+      <a routerLink="/profile/{{user?._id}}" (click)="setSelectedUser(user)" *ngIf="!user.online"> 
+        <a href="#"><img src="https://i.imgur.com/9ph4xQn.png" /></a>
+         <h5>{{user?.firstName}} {{user?.lastName }}</h5><small>({{user?._id}})</small>
+    </a>
+  </li>
+</ul>
+</div>
+
+ 

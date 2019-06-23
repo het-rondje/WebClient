@@ -1,0 +1,15 @@
+#videoElement {
+    max-height: 500px;
+    max-width: 1360px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.white {
+    margin-top: auto;
+    color: white;
+    margin-bottom: auto;
+}
+
+.red {
+    color: #D2302E;
+}

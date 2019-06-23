@@ -23,9 +23,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"            
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/nav-collapse.js",
+              "node_modules/flv.js/dist/flv.js",
+              "src/assets/js/jsencrypt/bin/jsencrypt.js"
+            ]
           },
           "configurations": {
             "production": {

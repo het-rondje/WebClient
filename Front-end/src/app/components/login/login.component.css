@@ -1,0 +1,46 @@
+.circleLogo {
+  width: 25%;
+  position: absolute;
+  bottom: 0;
+}
+
+.border-radius{
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.75);
+}
+
+.box button[type = "submit"]:hover{
+  background: #a01515;
+}
+.box button[type = "text"],.box input[type = "password"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #777777;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box button[type = "text"]:focus,.box input[type = "password"]:focus{
+  width: 280px;
+  border-color: #a01515;
+}
+.box button[type = "submit"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #a01515;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}

@@ -1,0 +1,37 @@
+p{
+    color: white
+}
+
+.item{
+    margin: 5px;
+    display: inline-block;
+}
+
+.image{
+    border-radius: 10px;
+}
+
+.title{
+    width: 225px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    margin-top: 0px;
+    margin-bottom: -1%;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.name{
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+.center{
+    width: 80%;
+    margin: 0 auto;
+}

@@ -1,0 +1,54 @@
+.messages {
+    height: 100%;
+}
+
+p {
+    color: white;
+    margin-bottom: 0.4rem;
+    font-size: 0.9em;
+}
+
+.chat_size {
+    color: #D2302E;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.no-border {
+    border-radius: 0 !important;
+}
+
+.btn-primary {
+    background-color: #D2302E;
+    border-color: #D2302E;
+}
+
+.btn-primary:focus {
+    background-color: #D2302E;
+    border-color: #D2302E;
+    box-shadow: 0 0 0 0.2rem rgba(210, 49, 46, 0.438);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background-color: white;
+    border-color: #D2302E;
+    color: #D2302E;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem rgba(210, 49, 46, 0.438);
+    border-color: #D2302E;
+}
+
+.inline-p {
+    display: inline;
+}
+
+.chat {
+    margin-top: 20px;
+    padding: 10px;
+    min-width: 339px;
+    overflow-y: auto;
+    word-break: break-all;
+    max-height: -webkit-fill-available;
+}

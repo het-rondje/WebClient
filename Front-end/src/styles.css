@@ -1,1 +1,81 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@ctrl/ngx-emoji-mart/picker";
+@import '~simplebar/dist/simplebar.css';
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-size: 100%;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: linear-gradient(to top, #202020, #303030);
+}
+
+.box {
+  width: 20%;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #222222ef;
+  text-align: center;
+}
+
+.box h1 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.box input[type="text"], .box input[type="password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #777777;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+
+.box input[type="text"]:focus, .box input[type="password"]:focus {
+  width: 280px;
+  border-color: #a01515;
+}
+
+.box input[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #a01515;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.box input[type="submit"]:hover {
+  background: #a01515;
+}
+
+.simplebar-scrollbar::before {
+  background-color: white;
+}

@@ -36,7 +36,7 @@
     "jsencrypt": "^3.0.0-rc.1",
     "ngx-socket-io": "^2.1.1",
     "node-rsa": "^1.0.5",
-    "npm": "^6.9.0",
+    "npm": "^6.13.4",
     "rxjs": "~6.5.2",
     "seed-color": "^2.0.1",
     "simplebar": "^4.0.0",
